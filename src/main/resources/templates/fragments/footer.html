@@ -1,0 +1,96 @@
+    <!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- FOOTER -->
+<footer>
+    <div id="footer-top-wrap">
+        <section id="footer-top" class="clearfix">
+            <article>
+                <h6 th:text="${store_name}"></h6>
+                <p th:text="${store_about}"></p>
+                <br/>
+                <br/>
+                <ul class="contact-info">
+                    <li class="address">
+                        <svg class="svg-pin">
+                            <use xlink:href="#svg-pin"></use>
+                        </svg>
+                        <p th:text="${store_address}"></p>
+                    </li>
+                    <li class="phone">
+                        <svg class="svg-phone">
+                            <use xlink:href="#svg-phone"></use>
+                        </svg>
+                        <p th:text="${store_phone}"></p>
+                    </li>
+                    <li class="email">
+                        <svg class="svg-envelope">
+                            <use xlink:href="#svg-envelope"></use>
+                        </svg>
+                        <p ><a th:href="'mailto:' + ${store_email}" th:text="${store_email}"></a></p>
+                    </li>
+                </ul>
+                <ul class="payment-methods">
+                    <li>
+                        <img src="images/payment/method1.jpg" alt="method1">
+                    </li>
+                    <li>
+                        <img src="images/payment/method2.jpg" alt="method2">
+                    </li>
+                    <li>
+                        <img src="images/payment/method3.jpg" alt="method3">
+                    </li>
+                </ul>
+            </article>
+
+            <article>
+                <h6>Liên kết</h6>
+                <nav id="footer-menu">
+                    <ul>
+                        <li>
+                            <a href="index.html">Trang chủ</a>
+                            <svg class="svg-arrow">
+                                <use xlink:href="#svg-arrow"></use>
+                            </svg>
+                        </li>
+                        <li>
+                            <a href="profile.html">Thông tin tài khoản</a>
+                            <svg class="svg-arrow">
+                                <use xlink:href="#svg-arrow"></use>
+                            </svg>
+                        </li>
+                        <li>
+                            <a href="cart.html">Giỏ hàng</a>
+                            <svg class="svg-arrow">
+                                <use xlink:href="#svg-arrow"></use>
+                            </svg>
+                        </li>
+                    </ul>
+                </nav>
+            </article>
+        </section>
+    </div>
+
+    <div th:replace="fragments/svg :: svgicons"></div>
+    <!-- jQuery -->
+    <script src="js/vendor/jquery-1.11.1.min.js"></script>
+    <!-- XM Accordion -->
+    <script src="js/vendor/jquery.xmaccordion.min.js"></script>
+    <!-- Owl Carrousel -->
+    <script src="js/vendor/owl.carousel.min.js"></script>
+
+    <script src="js/vendor/jquery.xmtab.min.js"></script>
+    <!-- Magnific Popup -->
+    <script src="js/vendor/jquery.magnific-popup.min.js"></script>
+    <!-- imgLiquid -->
+    <script src="js/vendor/imgLiquid-min.js"></script>
+    <!-- Header -->
+    <script src="js/header.js"></script>
+    <!-- Menu -->
+    <script src="js/menu.js"></script>
+    <!-- Home -->
+    <script src="js/home.js"></script>
+</footer>
+</body>
+</html>

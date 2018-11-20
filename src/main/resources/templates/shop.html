@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/vendor/magnific-popup.css">
+    <link rel="stylesheet" href="css/vendor/jquery.range.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico">
+    <title>Westeros | Shop</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div th:replace="fragments/modals :: modals"></div>
+
+<!-- SHOP -->
+<!--/*@thymesVar id="currentCate" type="edu.ptit.quynhhtn.entity.Category"*/-->
+<div id="shop-wrap">
+    <section id="shop" class="right expandible-sidebar">
+        <div class="sidebar-control">
+            <svg class="svg-gear">
+                <use xlink:href="#svg-gear"></use>
+            </svg>
+        </div>
+        <div th:replace="fragments/shop_sidebar :: shop_sidebar(currentMenu=${'shop'})"></div>
+        <div class="shop-products">
+            <h3 class="title" th:text="${currentCate.name}"> Men's Section</h3>
+            <div class="filters">
+                <h3 class="subtitle" th:text="${#lists.isEmpty(listItems)?'Không có sản phẩm nào':summaryText}"></h3>
+            </div>
+            <ul class="product-list list">
+                <th:block th:each="product : ${listItems}">
+                    <div th:replace="fragments/product_line_item :: product_line_item"></div>
+                </th:block>
+            </ul>
+            <ul class="pager">
+                <li>
+                    <a th:href="@{/shop.html(page=*{currentPage.longValue()-1},categories=*{currentCate.categoryId})}" class="button prev">
+                        <svg class="svg-arrow">
+                            <use xlink:href="#svg-arrow"></use>
+                        </svg>
+                    </a>
+                </li>
+                <th:block th:each="i: ${#numbers.sequence(1, lastPage)}">
+                    <li th:class="${currentPage==i?'selected':''}"><a th:href="@{/shop.html(page=*{i},categories=*{currentCate.getCategoryId()})}" th:text="${i}"></a></li>
+                </th:block>
+                <li>
+                    <a th:href="@{/shop.html(page=*{currentPage.longValue()+1},categories=*{currentCate.categoryId})}" class="button next">
+                        <svg class="svg-arrow">
+                            <use xlink:href="#svg-arrow"></use>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </section>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+<script src="js/shop.js"></script>
+</body>
+</html>

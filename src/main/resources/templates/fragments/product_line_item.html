@@ -1,0 +1,156 @@
+<li class="list-item" th:fragment="product_line_item" xmlns:th="http://www.thymeleaf.org">
+    <!--/*@thymesVar id="product" type="edu.ptit.quynhhtn.entity.Item"*/-->
+    <div class="actions">
+        <figure class="liquid">
+            <img th:src="${product.imageUrls.get(0).url}" th:alt="product + ${product.itemId}">
+        </figure>
+        <div>
+            <a th:href="'#qv-p' + ${product.itemId}" class="button quick-view"
+               data-effect="mfp-3d-unfold">
+                <svg class="svg-quickview">
+                    <use href="#svg-quickview"></use>
+                </svg>
+            </a>
+            <div th:id="'qv-p' + ${product.itemId}" class="product-quick-view mfp-with-anim mfp-hide">
+                <div class="product-pictures">
+                    <div class="product-photo">
+                        <figure class="liquid">
+                            <img th:src="${product.imageUrls.get(0).url}" alt="product-image">
+                        </figure>
+                    </div>
+                    <ul class="picture-views">
+                        <th:block th:each="imgUrl : ${product.imageUrls}">
+                            <li th:class="${(product.imageUrls.indexOf(imgUrl) == 0)?'selected':''}">
+                                <figure class="liquid">
+                                    <img th:src="${imgUrl.url}" alt="picture-view">
+                                </figure>
+                            </li>
+                        </th:block>
+                    </ul>
+                </div>
+                <div class="product-description">
+                    <a th:href="'/shop.html?categories=' + ${product.category.getCategoryId()} ">
+                        <p class="highlighted category" th:text="${product.category.name}"></p>
+                    </a>
+                    <a th:href="'/full-view.html?item=' + ${product.itemId}"><h6
+                            th:text="${product.name}"></h6></a>
+                    <ul class="rating big">
+                        <th:block th:each="i: ${#numbers.sequence(0, 4)}">
+                            <li th:class="${(product.rating - 1 >= i)?'filled':''}">
+                                <svg class="svg-star">
+                                    <use xlink:href="#svg-star"></use>
+                                </svg>
+                            </li>
+                        </th:block>
+                    </ul>
+                    <p th:text="${product.description}"></p>
+                    <p class="highlighted current"
+                       th:text="${'VND ' + #numbers.formatDecimal(product.currentPrice,0,'COMMA',0,'NONE')}"></p>
+                    <p class="highlighted previous"
+                       th:text="${'VND ' + #numbers.formatDecimal(product.originalPrice,0,'COMMA',0,'NONE')}"></p>
+                    <h5 class="stock">Tình trạng:
+                        <svg th:class="${product.inStock?'svg-check':'svg-plus'}">
+                            <use th:href="${product.inStock?'#svg-check':'#svg-plus'}"></use>
+                        </svg>
+                        <span th:class="${product.inStock?'available':'not-available'}"
+                              th:text="${(product.inStock)?'Sẵn hàng':'Hết hàng'}"></span>
+                    </h5>
+                    <h5 th:if="${product.inStock}">Chọn cỡ:</h5>
+                    <form class="westeros-form" th:if="${product.inStock}">
+                        <th:block th:each="size : ${product.listSize.split(',')}">
+                            <input th:id="${size + product.itemId}" type="radio" name="size" th:value="${size}">
+                            <label th:for="${size + product.itemId}"><span class="radio"><span></span></span>[[${size}]]</label>
+                        </th:block>
+                    </form>
+                    <div th:if="${product.inStock}">
+                        <h5>Số lượng:</h5>
+                        <div class="counter">
+                            <div class="control left"></div>
+                            <div class="value">
+                                <h5>2</h5>
+                            </div>
+                            <div class="control right"></div>
+                        </div>
+                    </div>
+                    <div class="options">
+                        <a href="#compare-modal" th:value="${product.itemId}" class="button medium compare cmp-popup"
+                           data-effect="mfp-3d-unfold">
+                            <svg class="svg-compare">
+                                <use xlink:href="#svg-compare"></use>
+                            </svg>
+                        </a>
+                        <a href="#wishlist-modal" th:value="${product.itemId}"
+                           class="button medium wishlist wishlist-popup">
+                            <svg class="svg-wishlist">
+                                <use xlink:href="#svg-wishlist"></use>
+                            </svg>
+                        </a>
+                        <a href="#cart-modal"
+                           th:value="${product.itemId}"
+                           th:class="'button ' + ${product.inStock?'cart-add cart-popup':'no-stock'}">
+                            <svg class="svg-plus">
+                                <use xlink:href="#svg-plus"></use>
+                            </svg>
+                            <span th:text="${product.inStock?'Thêm vào giỏ' : 'Hết hàng'}"
+                                  th:remove="tag"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <a th:href="'/full-view.html?item=' + ${product.itemId}" class="button full-view">
+                <svg class="svg-fullview">
+                    <use xlink:href="#svg-fullview"></use>
+                </svg>
+            </a>
+            <a href="#compare-modal" class="button compare cmp-popup" data-effect="mfp-3d-unfold">
+                <svg class="svg-compare">
+                    <use xlink:href="#svg-compare"></use>
+                </svg>
+            </a>
+        </div>
+    </div>
+    <div class="description">
+        <div class="clearfix">'
+            <a th:href="'/shop.html?categories=' + ${product.category.getCategoryId()} ">
+                <p class="highlighted category" th:text="${product.category.name}"></p>
+            </a>
+            <ul class="rating">
+                <th:block th:each="i: ${#numbers.sequence(0, 4)}">
+                    <li th:class="${(product.rating - 1 >= i)?'filled':''}">
+                        <svg class="svg-star">
+                            <use xlink:href="#svg-star"></use>
+                        </svg>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+        <div class="clearfix">
+            <a th:href="'/full-view.html?item=' + ${product.itemId}"><h6
+                    th:text="${product.name}"></h6></a>
+        </div>
+        <div class="clearfix">
+            <p class="long-description" th:text="${product.description}"></p>
+            <p class="highlighted current"
+               th:text="${'VND ' + #numbers.formatDecimal(product.currentPrice,0,'COMMA',0,'NONE')}"></p>
+        </div>
+        <div class="cart-options">
+            <a href="#wishlist-modal" th:value="${product.itemId}"
+               th:class="'button medium wishlist wishlist-popup' "
+               data-effect="mfp-3d-unfold">
+                <svg class="svg-wishlist">
+                    <use xlink:href="#svg-wishlist"></use>
+                </svg>
+                <span>Yêu thích</span>
+            </a>
+            <a href="#cart-modal" th:value="${product.itemId}"
+               th:class="'button ' + ${product.inStock?'cart-add':'no-stock'} + ' cart-popup' "
+               data-effect="mfp-3d-unfold">
+                <svg class="svg-plus">
+                    <use xlink:href="#svg-plus"></use>
+                </svg>
+                <span th:text="${product.inStock?'Thêm vào giỏ' : 'Hết hàng'}" th:remove="tag"></span>
+            </a>
+        </div>
+    </div>
+</li>
+</li>

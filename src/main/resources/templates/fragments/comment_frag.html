@@ -1,0 +1,15 @@
+<div th:fragment="comment_frag" class="sub-item review" xmlns:th="http://www.thymeleaf.org">
+    <!--/*@thymesVar id="comment" type="edu.ptit.quynhhtn.entity.Comment"*/-->
+        <h5 th:text="${comment.summary}"></h5>
+        <ul class="rating big">
+            <th:block th:each="i: ${#numbers.sequence(0, 4)}">
+                <li th:class="${(comment.rating - 1 >= i)?'filled':''}">
+                    <svg class="svg-star">
+                        <use xlink:href="#svg-star"></use>
+                    </svg>
+                </li>
+            </th:block>
+        </ul>
+    <p class="author"><span th:text="${comment.displayName}"></span> - <span th:text="${#dates.format(comment.createdDate, 'h:m dd/MM/yyyy')}" th:remove="tag"></span></p>
+    <p class="comment" th:text="${comment.content}"></p>
+</div>

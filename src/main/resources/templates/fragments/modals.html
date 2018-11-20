@@ -1,0 +1,30 @@
+<div th:fragment="modals" xmlns:th="http://www.thymeleaf.org">
+    <div id="compare-modal" class="compare-modal mfp-with-anim mfp-hide">
+        <img src="images/icons/compare-modal-logo.png" alt="logo">
+        <h5>Sản phẩm <span></span></h5>
+        <h6>Đã được thêm vào danh sách so sánh</h6>
+        <div class="options">
+            <a class="button medium mfp-close">Quay lại</a>
+            <a href="compare.html" class="button medium compare">Đến trang so sánh</a>
+        </div>
+    </div>
+    <div id="cart-modal" class="compare-modal mfp-with-anim mfp-hide">
+        <img src="images/icons/compare-modal-logo.png" alt="logo">
+        <h5>Sản phẩm <span></span></h5>
+        <h6>Đã được thêm vào giỏ hàng</h6>
+        <div class="options">
+            <a class="button medium mfp-close">Quay lại</a>
+            <a href="cart.html" class="button medium compare">Xem giỏ hàng</a>
+        </div>
+    </div>
+    <div id="wishlist-modal" class="compare-modal mfp-with-anim mfp-hide">
+        <img src="images/icons/compare-modal-logo.png" alt="logo">
+        <div id="wishlist-response">
+        </div>
+        <div class="options">
+            <a class="button medium mfp-close">Quay lại</a>
+            <a href="wishlist.html" class="button medium compare" th:if="${current_user != null}">Danh sách yêu thích</a>
+            <a href="register-login.html.html" class="button medium compare" th:unless="${current_user != null}">Đăng nhập</a>
+        </div>
+    </div>
+</div>

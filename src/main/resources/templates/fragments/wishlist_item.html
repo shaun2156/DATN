@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--/*@thymesVar id="wlDet" type="edu.ptit.quynhhtn.entity.WishListDetail"*/-->
+<div class="row" th:fragment="wishlist_item">
+    <div class="cell cart-item">
+        <div class="product-picture">
+            <figure class="liquid">
+                <img th:src="${wlDet.item.imageUrls.get(0).url}" alt="product-picture">
+            </figure>
+        </div>
+        <p class="highlighted" th:text="${wlDet.item.category.name}"></p>
+        <h3 th:text="${wlDet.item.name}"></h3>
+        <p th:text="${wlDet.item.shortDescription}"></p>
+    </div>
+    <div class="cell">
+        <p class="highlighted" th:text="${'VND ' + #numbers.formatDecimal(wlDet.item.currentPrice,0,'COMMA',0,'NONE')}"></p>
+    </div>
+    <div class="cell">
+        <div class="counter">
+            <div class="control left"></div>
+            <div class="value">
+                <h5>1</h5>
+            </div>
+            <div class="control right"></div>
+        </div>
+    </div>
+    <div class="cell buttons big">
+        <a href="#cart-modal" th:value="${wlDet.itemId}"
+           th:class="'button ' + ${wlDet.item.inStock?'':'no-stock'} + ' cart-add cart-popup add-cart-btn' "
+           data-effect="mfp-3d-unfold">
+            <svg class="svg-plus">
+                <use xlink:href="#svg-plus"></use>
+            </svg>
+            <span th:text="${wlDet.item.inStock?'Thêm vào giỏ' : 'Hết hàng'}" th:remove="tag"></span>
+        </a>
+
+        <div class="actions">
+            <a href="#compare-modal" th:value="${wlDet.itemId}" class="button medium compare cmp-popup"
+               data-effect="mfp-3d-unfold">
+                <svg class="svg-compare">
+                    <use xlink:href="#svg-compare"></use>
+                </svg>
+            </a>
+
+            <a th:href="'/removeFromWishList?itemId=' + ${wlDet.itemId}" class="button medium no-stock">
+                <svg class="svg-plus">
+                    <use xlink:href="#svg-plus"></use>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

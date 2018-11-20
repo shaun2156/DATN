@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--/*@thymesVar id="item" type="edu.ptit.quynhhtn.entity.Item"*/-->
+<li class="list-item" th:fragment="compare_cart_item">
+    <div class="compare-table">
+        <div class="row">
+            <div class="cell">
+                <div class="product-photo">
+                    <figure class="liquid">
+                        <img th:src="${item.imageUrls.get(0).url}" alt="product-image">
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell product-name-lbl">
+                <p class="highlighted" th:text="${item.getCategory().name}"></p>
+                <h5 th:text="${item.name}"></h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell product-rating-lbl">
+                <ul class="rating big">
+                    <th:block th:each="i: ${#numbers.sequence(0, 4)}">
+                        <li th:class="${(item.rating - 1 >= i)?'filled':''}">
+                            <svg class="svg-star">
+                                <use xlink:href="#svg-star"></use>
+                            </svg>
+                        </li>
+                    </th:block>
+                </ul>
+                <h6> Dựa trên [[${item.comments.size()}]] lượt đánh giá</h6>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell product-price-lbl">
+                <p class="highlighted price"
+                   th:text="${'VND ' + #numbers.formatDecimal(item.currentPrice,0,'COMMA',0,'NONE')}"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell product-description-lbl">
+                <p th:text="${item.description}"></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell">
+                <h5 class="size" th:text="${item.listSize}"></h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell" style="height: 64px;">
+                <ul class="colorpicker">
+                    <li><span data-color="#008fbe"></span></li>
+                    <li><span data-color="#90e103"></span></li>
+                    <li><span data-color="#4c4cab"></span></li>
+                    <li><span data-color="#252525"></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell" style="height: 48px;">
+                <h5 class="stock">
+                    <svg th:class="${item.inStock?'svg-check':'svg-plus'}">
+                        <use th:href="${item.inStock?'#svg-check':'#svg-plus'}"></use>
+                    </svg>
+                    <span th:class="${item.inStock?'available':'not-available'}"
+                          th:text="${(item.inStock)?'Sẵn hàng':'Hết hàng'}"></span>
+                </h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell" style="height: 65px;">
+                <div class="counter">
+                    <div class="control left"></div>
+                    <div class="value">
+                        <h5>2</h5>
+                    </div>
+                    <div class="control right"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell" style="height: 73px">
+                <a th:href="${item.inStock?'#cart-modal':'#'}" th:value="${item.itemId}"
+                   th:class="'button ' + ${item.inStock?'cart-add cart-popup':'no-stock'} + ' add-cart-btn' "
+                   data-effect="mfp-3d-unfold">
+                    <svg class="svg-plus">
+                        <use xlink:href="#svg-plus"></use>
+                    </svg>
+                    <span th:text="${item.inStock?'Thêm vào giỏ' : 'Hết hàng'}" th:remove="tag"></span>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="cell" style="height: 72px">
+                <div class="actions">
+                    <a href="#wishlist-modal" th:value="${item.itemId}"
+                       th:class="'button medium wishlist wishlist-popup' "
+                       data-effect="mfp-3d-unfold">
+                        <svg class="svg-wishlist">
+                            <use xlink:href="#svg-wishlist"></use>
+                        </svg>
+                    </a>
+                    <a th:href="'/removeFromCompareCart?itemId=' + ${item.itemId}" class="button medium no-stock remove-btn">
+                        <svg class="svg-plus">
+                            <use xlink:href="#svg-plus"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+</body>
+</html>

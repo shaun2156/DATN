@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav id="main-menu" th:fragment="menubar">
+    <img class="pull-nav" src="images/icons/pull-icon.png" alt="pull-icon">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <!--/*@thymesVar id="rootCategory" type="edu.ptit.quynhhtn.entity.Category"*/-->
+        <th:block th:each="categories : ${rootCategory.subCategories}">
+            <li>
+                <a th:href="'shop.html?categories=' + ${categories.getCategoryId()}"
+                   th:class="${#lists.isEmpty(categories.getSubCategories())?'':'submenu'}"
+                   th:text="${#strings.capitalize(categories.name)}"></a>
+                <ul class="submenu-small" th:if="${not #lists.isEmpty(categories.getSubCategories())}">
+                    <th:block th:each="subCat : ${categories.subCategories}">
+                        <li>
+                            <a th:href="'shop.html?categories=' + ${subCat.getCategoryId()}"
+                               th:text="${#strings.capitalize(subCat.name)}"></a>
+                        </li>
+                    </th:block>
+                </ul>
+            </li>
+        </th:block>
+        <li><a href="compare.html">So sánh</a></li>
+        <li><a href="wishlist.html" th:if="${current_user != null}">Yêu thích</a></li>
+        <li><a href="contact.html">Liên hệ</a></li>
+        <li><a href="register-login.html" th:if="${current_user == null}">Đăng nhập</a></li>
+    </ul>
+</nav>
+<!-- /MAIN MENU -->
+</body>
+</html>

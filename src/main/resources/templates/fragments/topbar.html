@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header th:fragment="topbar">
+    <div id="header-top-wrap">
+        <!-- HEADER TOP -->
+        <section id="header-top" class="clearfix">
+            <p class="contact">
+                Liên hệ với shop tại Email:
+                <a th:href="'mailto:' + ${store_email}" th:text="${store_email}"></a>
+            </p>
+
+            <div class="westeros-dropdown-container" th:if="${current_user != null}">
+                <ul class="westeros-dropdown default hide-on-click">
+                    <li>
+                        <a href="profile.html">
+                            <svg class="svg-gear">
+                                <use xlink:href="#svg-gear"></use>
+                            </svg>
+                            Tài khoản của bạn
+                        </a>
+                    </li>
+                    <li>
+                        <a href="wishlist.html">
+                            <svg class="svg-wishlist">
+                                <use xlink:href="#svg-wishlist"></use>
+                            </svg>
+                            Danh sách yêu thích
+                        </a>
+                    </li>
+                    <li>
+                        <a href="compare.html">
+                            <svg class="svg-compare">
+                                <use xlink:href="#svg-compare"></use>
+                            </svg>
+                            So sánh
+                        </a>
+                    </li>
+                    <li>
+                        <a href="cart.html">
+                            <svg class="svg-cart">
+                                <use xlink:href="#svg-cart"></use>
+                            </svg>
+                            Giỏ hàng
+                        </a>
+                    </li>
+                    <li>
+                        <a href="logout">
+                            <svg class="svg-cart">
+                                <use xlink:href="#svg-logged"></use>
+                            </svg>
+                            Đăng xuất
+                        </a>
+                    </li>
+                </ul>
+                <p class="login logged">
+                    <svg class="svg-logged">
+                        <use xlink:href="#svg-logged"></use>
+                    </svg>
+                    Chào bạn,
+                    <a href="profile.html" th:text="${current_user_name}"></a>
+                    <svg class="svg-arrow westeros-dropdown-control">
+                        <use xlink:href="#svg-arrow"></use>
+                    </svg>
+                </p>
+            </div>
+            <div th:unless="${current_user != null}">
+                <p class="login logged">
+                    <svg class="svg-logged">
+                        <use xlink:href="#svg-logged"></use>
+                    </svg>
+                    Bạn chưa đăng nhập,
+                    <a href="/register-login.html">Đăng kí hoặc đăng nhập ngay</a>
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <div id="header-bottom-wrap">
+        <section id="header-bottom">
+            <div class="logo-container">
+                <a href="index.html">
+                    <figure class="logo">
+                        <img src="images/logo.png" alt="logo">
+                        <figcaption>Westeros</figcaption>
+                    </figure>
+                </a>
+            </div>
+            <form class="westeros-form" action="search.html">
+                <label for="categories" class="select-block">
+                    <select name="categories" id="categories">
+                        <option value="0">Tất cả danh mục</option>
+                        <!--/*@thymesVar id="rootCategory" type="edu.ptit.quynhhtn.entity.Category"*/-->
+                        <th:block th:each="categories : ${rootCategory.subCategories}">
+                            <option th:value="${categories.categoryId}" th:text="${#strings.capitalize(categories.name)}"></option>
+                        </th:block>
+                    </select>
+                    <svg class="svg-arrow select-arrow">
+                        <use xlink:href="#svg-arrow"></use>
+                    </svg>
+                </label>
+                <input type="text" name="search" id="search" placeholder="Tìm kiếm trong danh mục...">
+                <input type="image" src="images/icons/search-icon.png" alt="search-icon">
+            </form>
+            <div class="westeros-dropdown-container">
+                    <div class="cart-control westeros-dropdown-control">
+                    <svg class="svg-order-box">
+                        <use xlink:href="#svg-order-box"></use>
+                    </svg>
+                    <svg class="svg-arrow select-arrow">
+                        <use xlink:href="#svg-arrow"></use>
+                    </svg>
+                    <h6>Giỏ hàng của bạn</h6>
+                    <p class="cart-content-short">(0)</p>
+                    <p class="cart-content-long">0 sản phẩm -</p>
+                    <p class="highlighted">VND 0</p>
+                </div>
+                <ul class="cart westeros-dropdown">
+                    <li class="item clearfix">
+                        <div class="picture">
+                            <figure class="liquid">
+                                <img src="images/items/02.png" alt="product1">
+                            </figure>
+                        </div>
+                        <div class="description">
+                            <p class="highlighted category">T-Shirts</p>
+                            <h6>The Crazy Bunny</h6>
+                        </div>
+                        <div class="quantity">
+                            <h6>1</h6>
+                        </div>
+                        <div class="price">
+                            <p class="highlighted">$86.00</p>
+                        </div>
+                        <img src="images/items/remove.png" alt="remove">
+                    </li>
+                    <!-- /CART ITEM -->
+
+                    <!-- CART ITEM -->
+                    <li class="item clearfix">
+                        <div class="picture">
+                            <figure class="liquid">
+                                <img src="images/items/33.png" alt="product1">
+                            </figure>
+                        </div>
+                        <div class="description">
+                            <p class="highlighted category">Phone Cases</p>
+                            <h6>I-Ladyskull</h6>
+                        </div>
+                        <div class="quantity">
+                            <h6>2</h6>
+                        </div>
+                        <div class="price">
+                            <p class="highlighted">$48.00</p>
+                        </div>
+                        <img src="images/items/remove.png" alt="remove">
+                    </li>
+                    <!-- /CART ITEM -->
+
+                    <!-- CART ITEM -->
+                    <li class="item clearfix">
+                        <div class="picture">
+                            <figure class="liquid">
+                                <img src="images/items/32.png" alt="product1">
+                            </figure>
+                        </div>
+                        <div class="description">
+                            <p class="highlighted category">Custom Sneakers</p>
+                            <h6>The Devil Walks</h6>
+                        </div>
+                        <div class="quantity">
+                            <h6>2</h6>
+                        </div>
+                        <div class="price">
+                            <p class="highlighted">$86.00</p>
+                        </div>
+                        <img src="images/items/remove.png" alt="remove">
+                    </li>
+                    <!-- /CART ITEM -->
+
+                    <!-- TOTAL -->
+                    <li class="total clearfix">
+                        <div>
+                            <h6>$220.00</h6>
+                            <h6>$15.50</h6>
+                            <p class="highlighted">$235.50</p>
+                        </div>
+                        <div>
+                            <h6>Subtotal</h6>
+                            <h6>Shipping</h6>
+                            <h6>Total</h6>
+                        </div>
+                    </li>
+                    <!-- /TOTAL -->
+
+                    <!-- ORDER -->
+                    <li class="order clearfix">
+                        <a href="checkout.html" class="button">Checkout</a>
+                        <a href="cart.html" class="button secondary">Go to Cart</a>
+                    </li>
+                    <!-- /ORDER -->
+                </ul>
+                <!-- /CART -->
+            </div>
+        </section>
+    </div>
+    <ul class="westeros-separator small">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</header>
+</body>
+</html>

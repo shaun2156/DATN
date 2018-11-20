@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="css/vendor/owl.carousel.css">
+	<link rel="stylesheet" href="css/vendor/magnific-popup.css">
+	<link rel="stylesheet" href="css/style.css">
+	<!-- favicon -->
+	<link rel="icon" href="favicon.ico">
+	<title>Westeros | Compare</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div th:replace="fragments/modals :: modals"></div>
+	<div id="shop-wrap">
+		<section id="shop" class="compare">
+			<!--/*@thymesVar id="compareCart" type="edu.ptit.quynhhtn.entity.CompareCart"*/-->
+			<h3 class="title" th:unless="${#lists.isEmpty(compareCart.itemList)}">So sánh sản phẩm</h3>
+			<h3 class="title" th:if="${#lists.isEmpty(compareCart.itemList)}">Hiện không có sản phẩm nào được chọn!</h3>
+
+			<ul th:unless="${#lists.isEmpty(compareCart.itemList)}" class="slide-controls">
+				<!-- LEFT CONTROL -->
+				<li>
+					<a href="#" class="button prev">
+						<!-- SVG ARROW -->
+						<svg class="svg-arrow">
+							<use xlink:href="#svg-arrow"></use>
+						</svg>
+						<!-- /SVG ARROW -->
+					</a>
+				</li>
+				<!-- /LEFT CONTROL -->
+
+				<!-- RIGHT CONTROL -->
+				<li>
+					<a href="#" class="button next">
+						<!-- SVG ARROW -->
+						<svg class="svg-arrow">
+							<use xlink:href="#svg-arrow"></use>
+						</svg>
+						<!-- /SVG ARROW -->
+					</a>
+				</li>
+				<!-- /RIGHT CONTROL -->
+			</ul>
+
+			<div th:unless="${#lists.isEmpty(compareCart.itemList)}" class="owl-compare-list-container">
+				<ul class="owl-compare-list owl-carousel">
+					<li class="list-item">
+						<div class="compare-table">
+							<div class="row">
+								<div class="cell">
+									<div class="product-photo-lbl">
+										<h5></h5>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="cell product-name-lbl">
+									<h5>Tên Sản phẩm</h5>
+								</div>
+							</div>
+							<div class="row">
+								<div class="cell product-rating-lbl">
+									<h5>Đánh giá</h5>
+								</div>
+							</div>
+							<div class="row">
+								<div class="cell product-price-lbl">
+									<h5>Giá</h5>
+								</div>
+							</div>
+							<div class="row">
+								<div class="cell product-description-lbl">
+									<h5>Mô tả</h5>
+								</div>
+							</div>
+							<div class="row">
+								<div class="cell">
+									<h5>Kích thước</h5>
+								</div>
+							</div>
+							<div class="row">
+								<div class="cell" style="height: 64px;">
+									<h5>Màu sắc</h5>
+								</div>
+							</div>
+							<div class="row">
+								<div class="cell" style="height: 48px;">
+									<h5>Tình trạng</h5>
+								</div>
+							</div>
+							<div class="row">
+								<div class="cell" style="height: 65px;">
+									<h5>Số lượng</h5>
+								</div>
+							</div>
+							<div class="row">
+								<div class="cell" style="height: 73px">
+								</div>
+							</div>
+							<div class="row">
+								<div class="cell" style="height: 72px">
+								</div>
+							</div>
+						</div>
+					</li>
+					<th:block th:each="item : ${compareCart.itemList}">
+						<div th:replace="fragments/compare_cart_item :: compare_cart_item" th:with="item=${item}"></div>
+					</th:block>
+				</ul>
+			</div>
+		</section>
+	</div>
+<div th:replace="fragments/footer :: footer"></div>
+<script src="js/compare.js"></script>
+</body>
+</html>

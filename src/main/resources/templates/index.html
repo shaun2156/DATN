@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/vendor/owl.carousel.css">
+    <link rel="stylesheet" href="css/vendor/magnific-popup.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico">
+    <title>Westeros | Home</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div th:replace="fragments/modals :: modals"></div>
+
+<div id="cart-modal" class="compare-modal mfp-with-anim mfp-hide">
+    <img src="images/icons/compare-modal-logo.png" alt="logo">
+    <h5>Sản phẩm <span></span></h5>
+    <h6>Đã được thêm vào danh sách so sánh</h6>
+    <div class="options">
+        <a class="button medium mfp-close">Quay lại</a>
+        <a href="compare.html" class="button medium compare">Đến trang so sánh</a>
+    </div>
+</div>
+<div style="margin-top: 50px" class="product-showcase-wrap">
+    <section class="product-showcase">
+        <h3 class="title">Sản phẩm nổi bật</h3>
+        <ul class="slide-controls">
+            <li>
+                <a href="#" class="button prev">
+                    <svg class="svg-arrow">
+                        <use xlink:href="#svg-arrow"></use>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="button next">
+                    <svg class="svg-arrow">
+                        <use xlink:href="#svg-arrow"></use>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+
+        <ul id="owl-f-products" class="product-list grid owl-carousel">
+            <th:block th:each="product : ${featured_products}">
+                <div th:replace="fragments/index_product_list_item :: product-list-item" th:with="product=${product}"></div>
+            </th:block>
+        </ul>
+    </section>
+</div>
+
+<div class="product-showcase-wrap">
+    <section class="product-showcase">
+        <h3 class="title">Sản phẩm mới</h3>
+        <ul class="slide-controls">
+            <li>
+                <a href="#" class="button prev">
+                    <svg class="svg-arrow">
+                        <use xlink:href="#svg-arrow"></use>
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="#" class="button next">
+                    <svg class="svg-arrow">
+                        <use xlink:href="#svg-arrow"></use>
+                    </svg>
+                </a>
+            </li>
+        </ul>
+        <ul id="owl-bs-products" class="product-list grid owl-carousel">
+            <th:block th:each="product : ${newProducts}">
+                <div th:replace="fragments/index_product_list_item :: product-list-item" th:with="product=${product}"></div>
+            </th:block>
+        </ul>
+    </section>
+</div>
+
+<div id="institutional-wrap">
+    <section id="institutional">
+        <h3 class="title">Giới thiệu</h3>
+        <ul class="bullets">
+            <li>
+                <svg class="svg-truck">
+                    <use xlink:href="#svg-truck"></use>
+                </svg>
+                <h6>Ship hỏa tốc</h6>
+                <p>Ship hàng nhanh chóng, với chi phí tối thiểu</p>
+            </li>
+            <li>
+                <svg class="svg-ribbon">
+                    <use xlink:href="#svg-ribbon"></use>
+                </svg>
+                <h6>Chất lượng tuyệt hảo</h6>
+                <p>Sản phẩm của chúng tôi được kiểm tra kĩ càng, đảm bảo chất lượng tuyệt vời nhất</p>
+            </li>
+            <li>
+                <svg class="svg-piggy">
+                    <use xlink:href="#svg-piggy"></use>
+                </svg>
+                <h6>Đổi trả hàng miễn phí</h6>
+                <p>Hỗ trợ đổi trả hàng lên đến 30 ngày và 7 ngày với hàng khuyến mãi</p>
+            </li>
+            <li>
+                <svg class="svg-customer-service">
+                    <use xlink:href="#svg-customer-service"></use>
+                </svg>
+                <h6>Đội ngũ hỗ trợ nhiệt tình</h6>
+                <p>Liên hệ trực tiếp, hỗ trợ 24/7</p>
+            </li>
+        </ul>
+    </section>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="css/vendor/magnific-popup.css">
+	<link rel="stylesheet" href="css/style.css">
+	<!-- favicon -->
+	<link rel="icon" href="favicon.ico">
+	<title>Westeros | Cart</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<!-- SHOP -->
+	<div id="shop-wrap">
+		<section id="shop" class="right">
+			<!-- SIDEBAR CONTROL -->
+			<div class="sidebar-control"></div>
+			<!-- /SIDEBAR CONTROL -->
+
+			<!-- SHOP SIDEBAR -->
+			<aside class="shop-sidebar checkout-cart">
+				<!-- SIDEBAR CONTROL -->
+				<svg class="svg-plus sidebar-control">
+					<use xlink:href="#svg-plus"></use>
+				</svg>
+				<!-- /SIDEBAR CONTROL -->
+
+				<h3 class="title">Calculate Shipping</h3>
+				<form class="westeros-form">
+					<!-- SELECT BLOCK -->
+					<label class="select-block" for="country">
+						<select name="country" id="country">
+							<option value="0">Select your country...</option>
+							<option value="1">United States</option>
+							<option value="2">Canada</option>
+						</select>
+						<!-- SVG ARROW -->
+						<svg class="svg-arrow select-arrow">
+							<use xlink:href="#svg-arrow"></use>
+						</svg>
+						<!-- /SVG ARROW -->
+					</label>
+					<!-- /SELECT BLOCK -->
+
+					<!-- SELECT BLOCK -->
+					<label class="select-block" for="state">
+						<select name="state" id="state">
+							<option value="0">Select your state...</option>
+							<option value="1">New York</option>
+						</select>
+						<!-- SVG ARROW -->
+						<svg class="svg-arrow select-arrow">
+							<use xlink:href="#svg-arrow"></use>
+						</svg>
+						<!-- /SVG ARROW -->
+					</label>
+					<!-- /SELECT BLOCK -->
+
+					<!-- SELECT BLOCK -->
+					<label class="select-block last" for="city">
+						<select name="city" id="city">
+							<option value="0">Select your city...</option>
+							<option value="1">New York</option>
+							<option value="2">San Francisco</option>
+						</select>
+						<!-- SVG ARROW -->
+						<svg class="svg-arrow select-arrow">
+							<use xlink:href="#svg-arrow"></use>
+						</svg>
+						<!-- /SVG ARROW -->
+					</label>
+					<!-- /SELECT BLOCK -->
+
+					<button class="button small">Update Shipping</button>
+				</form>
+
+				<h3 class="title">Coupon Code</h3>
+				<form class="westeros-form">
+					<input type="text" placeholder="Enter your promotional code here...">
+					<button class="button small">Redeem Code</button>
+				</form>
+				
+				<h3 class="title">Cart Total</h3>
+				<!-- CART TOTAL -->
+				<div class="cart-total">
+					<!-- SUBTOTAL -->
+					<div class="subtotal">
+						<h5>Cart Subtotal</h5>
+						<h5>$361.00</h5>
+					</div>
+					<!-- /SUBTOTAL -->
+
+					<!-- SUBTOTAL -->
+					<div class="subtotal">
+						<h5>Shipping</h5>
+						<h5>$25.50</h5>
+					</div>
+					<!-- /SUBTOTAL -->
+
+					<!-- SUBTOTAL -->
+					<div class="subtotal">
+						<h5>Coupon Code</h5>
+						<h5>-$5.00</h5>
+					</div>
+					<!-- /SUBTOTAL -->
+
+					<!-- TOTAL -->
+					<div class="total">
+						<h5>Total Order</h5>
+						<h5>$381.50</h5>
+					</div>
+					<!-- /TOTAL -->
+				</div>
+				<!-- /CART TOTAL -->
+
+				<a href="checkout.html" class="button">Proceed to Checkout</a>
+			</aside>
+			<!-- /SHOP SIDEBAR -->
+
+			<!-- SHOP PRODUCTS -->
+			<div class="shop-products shop-cart">
+				<h3 class="title">Shopping Cart</h3>
+
+				<!-- COMPARE MODAL -->
+				<div th:replace="fragments/modals :: modals"></div>
+				<!-- /COMPARE MODAL -->
+
+				<!-- SHOPPING CART -->
+				<div class="shopping-cart wishlist-cart">
+					<!-- ROW -->
+					<div class="row header">
+						<!-- CELL -->
+						<div class="cell">
+							<h5>Product Details</h5>
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<h5>Unit Price</h5>
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<h5>Quantity</h5>
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<h5>Subtotal</h5>
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">				
+						</div>
+						<!-- /CELL -->
+					</div>
+					<!-- /ROW -->
+
+					<!-- ROW -->
+					<div class="row">
+						<!-- CELL -->
+						<div class="cell cart-item">
+							<div class="product-picture">
+								<figure class="liquid">
+									<img src="images/items/15.png" alt="product-picture">
+								</figure>
+							</div>
+							<p class="highlighted">T-Shirts</p>
+							<h3>The Devil Pin</h3>
+							<p>Lorem ipsum dolor</p>
+							<h6>Size: <span>Large</span></h6>
+							<!-- COLORPICKER -->
+							<ul class="colorpicker">
+								<li><span data-color="#252525"></span></li>
+							</ul>
+							<!-- /COLORPICKER -->
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<p class="highlighted">$54.00</p>
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<!-- COUNTER -->
+							<div class="counter">
+								<div class="control left"></div>
+								<div class="value">
+									<h5>2</h5>
+								</div>
+								<div class="control right"></div>
+							</div>
+							<!-- /COUNTER -->
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<p class="highlighted">$108.00</p>
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell buttons small">
+							<!-- ACTIONS -->
+							<div class="actions">
+								<a href="#compare-modal" class="button medium compare cmp-popup" data-effect="mfp-3d-unfold">
+									<!-- SVG COMPARE -->
+									<svg class="svg-compare">
+										<use xlink:href="#svg-compare"></use>	
+									</svg>
+									<!-- /SVG COMPARE -->
+								</a>
+
+								<a href="#" class="button medium no-stock">
+									<!-- SVG PLUS -->
+									<svg class="svg-plus">
+										<use xlink:href="#svg-plus"></use>
+									</svg>
+									<!-- /SVG PLUS -->
+								</a>
+							</div>
+							<!-- /ACTIONS -->
+						</div>
+						<!-- /CELL -->
+					</div>
+					<!-- /ROW -->
+
+					<!-- ROW -->
+					<div class="row">
+						<!-- CELL -->
+						<div class="cell cart-item">
+							<div class="product-picture">
+								<figure class="liquid">
+									<img src="images/items/34.png" alt="product-picture">
+								</figure>
+							</div>
+							<p class="highlighted">Phone Cases</p>
+							<h3>Dial Z For Zombie</h3>
+							<p>Lorem ipsum dolor</p>
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<p class="highlighted">$26.00</p>
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<!-- COUNTER -->
+							<div class="counter">
+								<div class="control left"></div>
+								<div class="value">
+									<h5>3</h5>
+								</div>
+								<div class="control right"></div>
+							</div>
+							<!-- /COUNTER -->
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<p class="highlighted">$78.00</p>
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell buttons small">
+							<!-- ACTIONS -->
+							<div class="actions">
+								<a href="#compare-modal" class="button medium compare cmp-popup" data-effect="mfp-3d-unfold">
+									<!-- SVG COMPARE -->
+									<svg class="svg-compare">
+										<use xlink:href="#svg-compare"></use>	
+									</svg>
+									<!-- /SVG COMPARE -->
+								</a>
+
+								<a href="#" class="button medium no-stock">
+									<!-- SVG PLUS -->
+									<svg class="svg-plus">
+										<use xlink:href="#svg-plus"></use>
+									</svg>
+									<!-- /SVG PLUS -->
+								</a>
+							</div>
+							<!-- /ACTIONS -->
+						</div>
+						<!-- /CELL -->
+					</div>
+					<!-- /ROW -->
+
+					<!-- ROW -->
+					<div class="row">
+						<!-- CELL -->
+						<div class="cell cart-item">
+							<div class="product-picture">
+								<figure class="liquid">
+									<img src="images/items/32.png" alt="product-picture">
+								</figure>
+							</div>
+							<p class="highlighted">Custom Sneakers</p>
+							<h3>The Devil Walks</h3>
+							<p>Lorem ipsum dolor</p>
+							<h6>Size: <span>6</span></h6>
+							<!-- COLORPICKER -->
+							<ul class="colorpicker">
+								<li><span data-color="#d52929"></span></li>
+							</ul>
+							<!-- /COLORPICKER -->
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<p class="highlighted">$43.00</p>
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<!-- COUNTER -->
+							<div class="counter">
+								<div class="control left"></div>
+								<div class="value">
+									<h5>1</h5>
+								</div>
+								<div class="control right"></div>
+							</div>
+							<!-- /COUNTER -->
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<p class="highlighted">$43.00</p>
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell buttons small">
+							<!-- ACTIONS -->
+							<div class="actions">
+								<a href="#compare-modal" class="button medium compare cmp-popup" data-effect="mfp-3d-unfold">
+									<!-- SVG COMPARE -->
+									<svg class="svg-compare">
+										<use xlink:href="#svg-compare"></use>	
+									</svg>
+									<!-- /SVG COMPARE -->
+								</a>
+
+								<a href="#" class="button medium no-stock">
+									<!-- SVG PLUS -->
+									<svg class="svg-plus">
+										<use xlink:href="#svg-plus"></use>
+									</svg>
+									<!-- /SVG PLUS -->
+								</a>
+							</div>
+							<!-- /ACTIONS -->
+						</div>
+						<!-- /CELL -->
+					</div>
+					<!-- /ROW -->
+
+					<!-- ROW -->
+					<div class="row">
+						<!-- CELL -->
+						<div class="cell cart-item">
+							<div class="product-picture">
+								<figure class="liquid">
+									<img src="images/items/35.png" alt="product-picture">
+								</figure>
+							</div>
+							<p class="highlighted">Pin Badges</p>
+							<h3>Mo Monster</h3>
+							<p>Lorem ipsum dolor</p>
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<p class="highlighted">$2.00</p>
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<!-- COUNTER -->
+							<div class="counter">
+								<div class="control left"></div>
+								<div class="value">
+									<h5>3</h5>
+								</div>
+								<div class="control right"></div>
+							</div>
+							<!-- /COUNTER -->
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<p class="highlighted">$6.00</p>
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell buttons small">
+							<!-- ACTIONS -->
+							<div class="actions">
+								<a href="#compare-modal" class="button medium compare cmp-popup" data-effect="mfp-3d-unfold">
+									<!-- SVG COMPARE -->
+									<svg class="svg-compare">
+										<use xlink:href="#svg-compare"></use>	
+									</svg>
+									<!-- /SVG COMPARE -->
+								</a>
+
+								<a href="#" class="button medium no-stock">
+									<!-- SVG PLUS -->
+									<svg class="svg-plus">
+										<use xlink:href="#svg-plus"></use>
+									</svg>
+									<!-- /SVG PLUS -->
+								</a>
+							</div>
+							<!-- /ACTIONS -->
+						</div>
+						<!-- /CELL -->
+					</div>
+					<!-- /ROW -->
+
+					<!-- ROW -->
+					<div class="row">
+						<!-- CELL -->
+						<div class="cell cart-item">
+							<div class="product-picture">
+								<figure class="liquid">
+									<img src="images/items/26.png" alt="product-picture">
+								</figure>
+							</div>
+							<p class="highlighted">T-Shirts</p>
+							<h3>The Happy Pastry</h3>
+							<p>Lorem ipsum dolor</p>
+							<h6>Size: <span>6</span></h6>
+							<!-- COLORPICKER -->
+							<ul class="colorpicker">
+								<li><span data-color="#d2d2d2"></span></li>
+							</ul>
+							<!-- /COLORPICKER -->
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<p class="highlighted">$63.00</p>
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<!-- COUNTER -->
+							<div class="counter">
+								<div class="control left"></div>
+								<div class="value">
+									<h5>2</h5>
+								</div>
+								<div class="control right"></div>
+							</div>
+							<!-- /COUNTER -->
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell">
+							<p class="highlighted">$126.00</p>
+						</div>
+						<!-- /CELL -->
+
+						<!-- CELL -->
+						<div class="cell buttons small">
+							<!-- ACTIONS -->
+							<div class="actions">
+								<a href="#compare-modal" class="button medium compare cmp-popup" data-effect="mfp-3d-unfold">
+									<!-- SVG COMPARE -->
+									<svg class="svg-compare">
+										<use xlink:href="#svg-compare"></use>	
+									</svg>
+									<!-- /SVG COMPARE -->
+								</a>
+
+								<a href="#" class="button medium no-stock">
+									<!-- SVG PLUS -->
+									<svg class="svg-plus">
+										<use xlink:href="#svg-plus"></use>
+									</svg>
+									<!-- /SVG PLUS -->
+								</a>
+							</div>
+							<!-- /ACTIONS -->
+						</div>
+						<!-- /CELL -->
+					</div>
+					<!-- /ROW -->
+				</div>
+				<!-- /SHOPPING CART -->
+			</div>
+			<!-- /SHOP PRODUCTS -->
+		</section>
+	</div>
+	<!-- /SHOP -->
+
+	<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>
+

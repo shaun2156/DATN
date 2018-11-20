@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<!-- favicon -->
+	<link rel="icon" href="favicon.ico">
+	<title>Westeros | Contact</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+	<!-- CONTACT -->
+	<div id="contact-wrap">
+		<section id="contact">
+			<!-- CONTACT FORM -->
+			<div class="contact-form">
+				<h3 class="title">Contact</h3>
+				<!-- CONTACT DETAILS -->
+				<div class="contact-details">
+					<p th:text="${contact_description}"></p>
+					<!-- CONTACT INFO -->
+					<ul class="contact-info">
+						<li class="address">
+							<!-- SVG PIN -->
+							<svg class="svg-pin">
+								<use xlink:href="#svg-pin"></use>	
+							</svg>
+							<!-- /SVG PIN -->
+							<p th:text="${store_address}"></p>
+						</li>
+						<li class="phone">
+							<svg class="svg-phone">
+								<use xlink:href="#svg-phone"></use>	
+							</svg>
+							<p th:text="${store_phone}"></p>
+						</li>
+						<li class="email">
+							<!-- SVG ENVELOPE -->
+							<svg class="svg-envelope">
+								<use xlink:href="#svg-envelope"></use>	
+							</svg>
+							<!-- /SVG ENVELOPE -->
+							<p><a th:href="'mailto:' + ${store_email}" th:text="${store_email}"></a></p>
+						</li>
+					</ul>
+					<!-- /CONTACT INFO -->
+					<h5>Connect with us!</h5>
+					<!-- SOCIAL LINKS -->
+					<ul class="social-links">
+						<li class="fb"><a href="#"></a></li>
+						<li class="gplus"><a href="#"></a></li>
+					</ul>
+					<!-- /SOCIAL LINKS -->
+				</div>
+				<!-- /CONTACT DETAILS -->
+				<div class="featured-form">
+					<form class="westeros-form" action="#"
+						  th:action="@{/submitSupportTicket}"
+						  th:object="${supportTicketFrm}" method="post" th:if="${submit.length() == 0}">
+						<label class="rl-label required">Tên đầy đủ</label>
+						<input type="text" th:field="*{fullName}" placeholder="Nhập tên đầy đủ của bạn...">
+						<label class="rl-label required">Email</label>
+						<input type="text" th:field="*{email}" placeholder="Nhập email của bạn...">
+						<label class="rl-label required">Góp ý</label>
+						<textarea  th:field="*{content}" placeholder="Nhập góp ý của bạn..."></textarea>
+						<button class="button">Gửi chúng tôi</button>
+					</form>
+					<div th:if="${submit.equals('success')}">
+						<h3>Cảm ơn bạn đã liên hệ chúng tôi</h3>
+						<br/>
+						<a href="index.html" class="button" style="width: 200px">Quay lại trang chủ</a>
+					</div>
+
+				</div>
+			</div>
+			<!-- /CONTACT FORM -->
+		</section>
+	</div>
+	<!-- /CONTACT -->
+
+	<!--MAP-->
+	<section id="map"></section>
+	<!--/MAP-->
+
+<div th:replace="fragments/footer :: footer"></div>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script th:inline="javascript">
+    function initialize() {
+        var mapCanvas = document.getElementById('map');
+
+        var mapOptions = {
+            center: new google.maps.LatLng(20.9813266,105.7852926),
+            disableDefaultUI: true,
+            scrollwheel: false,
+            zoom: 16,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        //Create map
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+
+        //Create marker
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(20.9813266,105.7852926),
+            map: map,
+            title: 'the Bebop',
+            icon: 'images/map-marker.png'
+        });
+
+        //Map marker info
+        var contentString = '<div id="map-info">'+
+            '<h3>[[${store_name}]]</h3>'+
+            '<p style="text-align:left; margin:0;"><strong>' + [[${store_name}]] + '</strong>, is the <strong>best clothing shop</strong> in the city.<br>' + [[${store_index_description}]] + '</p>'+
+            '</div>';
+
+        //Add info to marker
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+        });
+
+        //Keep map centered
+        google.maps.event.addDomListener(window, 'resize', function() {
+            var center = map.getCenter();
+            google.maps.event.trigger(map, "resize");
+            map.setCenter(center);
+        });
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</body>
+</html>

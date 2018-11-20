@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="css/style.css">
+	<!-- favicon -->
+	<link rel="icon" href="favicon.ico">
+	<title>Westeros | Profile</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+	<!-- SHOP -->
+	<div id="shop-wrap">
+		<section id="shop" class="expandible-sidebar">
+			<div class="shop-products">
+				<h3 class="title">Thông tin tài khoản</h3>
+				<div class="profile-info">
+					<h5 class="profile-header">
+						<span>  </span>Thông tin cá nhân
+						<svg class="plus">
+							<rect class="vertical" x="4" width="4" height="12"/>
+							<rect y="4" width="12" height="4"/>
+						</svg>
+					</h5>
+					<div class="profile-data">
+						<div class="featured-form">
+							<form id="profile-info-form" class="westeros-form"
+								  action="#"
+								  th:action="@{/doUpdateProfile}"
+								  th:object="${profileFrm}" method="post">
+								<div>
+									<label class="rl-label">Tên đầy đủ</label>
+									<input type="text" th:field="*{fullName}" placeholder="Nhập tên đầy đủ của bạn...">
+								</div>
+								<div>
+									<label class="rl-label">Tên viết tắt</label>
+									<input type="text" th:field="*{shortName}" placeholder="Nhập tên vắn tắt của bạn...">
+								</div>
+								<div>
+									<label class="rl-label">Địa chỉ Email</label>
+									<input type="text" th:field="*{email}" disabled="true" >
+								</div>
+								<div>
+									<label class="rl-label">Số điện thoại</label>
+									<input type="text" th:field="*{phone}" placeholder="Nhập số điện thoại...">
+								</div>
+								<div>
+									<label class="rl-label">Ngày sinh</label>
+									<input type="text" th:field="*{dob}" placeholder="Ngày/Tháng/Năm - dd/MM/yyyy...">
+								</div>
+								<div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<button form="profile-info-form" class="button profile-button">Lưu thay đổi</button>
+			</div>
+			<div class="clearfix"></div>
+		</section>
+	</div>
+<div th:replace="fragments/footer :: footer"></div>
+<!-- Profile -->
+<script src="js/profile.js"></script>
+</body>
+</html>

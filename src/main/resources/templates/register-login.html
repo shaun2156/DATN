@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"><head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="stylesheet" href="css/vendor/owl.carousel.css">
+	<link rel="stylesheet" href="css/style.css">
+	<!-- favicon -->
+	<link rel="icon" href="favicon.ico">
+	<title>Westeros | Login</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+	<!-- REGISTER-LOGIN -->
+	<div id="register-login-wrap">
+		<section id="register-login">
+			<div class="featured-form">
+				<h3>Đăng ký ngay!</h3>
+				<div th:if="${#request.getParameter('registerError') != null}">
+                    <a href="#" style="font-size: 1em; font-weight: 600;" th:if="${#request.getParameter('registerError').equalsIgnoreCase('false')}">Đăng kí tài khoản thành công!</a>
+                    <a href="#" style="font-size: 1em; font-weight: 600;" th:if="${#request.getParameter('registerError').equalsIgnoreCase('true')}">Email đã được đăng kí!</a>
+                    <br/><br/>
+				</div>
+				<form class="westeros-form"  action="#"
+					  th:action="@{/doRegister}"
+					  th:object="${registerFrm}" method="post">
+					<label class="rl-label">Tên đầy đủ</label>
+					<input type="text" th:field="*{fullName}" placeholder="Nhập tên đầy đủ của bạn...">
+					<label class="rl-label required">Địa chỉ Email</label>
+					<input type="text" th:field="*{email}"placeholder="Nhập địa chỉ email...">
+					<label class="rl-label required">Mật khẩu</label>
+					<input type="password" th:field="*{password}" placeholder="Nhập mật khẩu của bạn...">
+					<button class="button register">Tạo tài khoản</button>
+				</form>
+			</div>
+
+			<div class="featured-form">
+				<h3>Đăng nhập</h3>
+                <div th:if="${#request.getParameter('error') != null}">
+                    <a href="#" style="font-size: 1em; font-weight: 600;">Thông tin đăng nhập không chính xác!</a>
+                    <br/><br/>
+                </div>
+				<form class="westeros-form" th:action="@{/j_spring_security_check}" method='POST' name="login-form">
+					<label class="rl-label">Địa chỉ Email</label>
+					<input type="text" name="username" placeholder="Nhập địa chỉ email...">
+					<label class="rl-label">Mật khẩu</label>
+					<input type="password" name="password" placeholder="Nhập mật khẩu của bạn...">
+					<input type="checkbox" id="remember" name="remember-me">
+					<label for="remember"><span class="checkbox"><span></span></span>Lưu thông tin đăng nhập</label>
+					<button class="button login" name="submit" type="submit" value="submit">Đăng nhập</button>
+				</form>
+			</div>
+		</section>
+	</div>
+	<!-- /REGISTER-LOGIN -->
+
+<div th:replace="fragments/footer :: footer"></div>
+
+<!-- Register-Login -->
+<script src="js/register-login.js"></script>
+</body>
+</html>

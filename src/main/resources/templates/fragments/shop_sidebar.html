@@ -1,0 +1,67 @@
+<aside class="shop-sidebar" th:fragment="shop_sidebar (currentMenu)" xmlns:th="http://www.thymeleaf.org">
+    <svg class="svg-plus sidebar-control">
+        <use xlink:href="#svg-plus"></use>
+    </svg>
+    <h3 class="title">Danh mục</h3>
+    <ul class="accordion">
+        <!--/*@thymesVar id="rootCategory" type="edu.ptit.quynhhtn.entity.Category"*/-->
+        <th:block th:each="category : ${rootCategory.subCategories}">
+            <li>
+                <a href="#">
+                    <h6 th:text="${category.name}"></h6>
+                    <svg class="plus">
+                        <rect class="vertical" x="3" width="3" height="9"/>
+                        <rect y="3" width="9" height="3"/>
+                    </svg>
+                </a>
+                <ul class="sub-items">
+                    <li>
+                        <ul>
+                            <th:block th:each="subCat : ${category.subCategories}">
+                                <li>
+                                    <a th:href="'/' + ${currentMenu} + '.html?categories=' + ${subCat.getCategoryId()}">
+                                        <svg class="svg-arrow">
+                                            <use xlink:href="#svg-arrow"></use>
+                                        </svg>
+                                        <span th:text="${subCat.name}" th:remove="tag"></span>
+                                    </a>
+                                </li>
+                            </th:block>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </th:block>
+    </ul>
+    <h3 class="title">Sản phẩm nổi bật</h3>
+    <ul class="product-preview">
+        <th:block th:each="item : ${featured_products}">
+            <li>
+                <a th:href="'/full-view.html?item=' + ${item.itemId}">
+                    <div class="picture">
+                        <figure class="liquid">
+                            <img th:src="${item.imageUrls.get(0).url}" alt="product1">
+                        </figure>
+                    </div>
+                </a>
+                <a th:href="'/shop.html?categories=' + ${item.category.getCategoryId()}">
+                    <p class="highlighted category" th:text="${item.category.name}"></p>
+                </a>
+                <a th:href="'/full-view.html?item=' + ${item.itemId}">
+                    <h6 th:text="${item.name}"></h6>
+                </a>
+                <ul class="rating">
+                    <th:block th:each="i: ${#numbers.sequence(0, 4)}">
+                        <li th:class="${(item.rating - 1 >= i)?'filled':''}">
+                            <svg class="svg-star">
+                                <use xlink:href="#svg-star"></use>
+                            </svg>
+                        </li>
+                    </th:block>
+                </ul>
+                <p class="highlighted current"
+                   th:text="${'VND ' + #numbers.formatDecimal(item.currentPrice,0,'COMMA',0,'NONE')}"></p>
+            </li>
+        </th:block>
+    </ul>
+</aside>

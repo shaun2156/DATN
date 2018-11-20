@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/vendor/magnific-popup.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico">
+    <title>Westeros | Wishlist</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+<div th:replace="fragments/modals :: modals"></div>
+<div id="shop-wrap">
+    <section id="shop" class="right expandible-sidebar">
+        <div class="sidebar-control">
+            <svg class="svg-gear">
+                <use xlink:href="#svg-gear"></use>
+            </svg>
+        </div>
+        <div th:replace="fragments/shop_sidebar :: shop_sidebar(currentMenu=${'wishlist'})"></div>
+        <div class="shop-products">
+            <h3 class="title">Danh sách yêu thích của bạn</h3>
+            <div class="filters single">
+                <!--/*@thymesVar id="wishList" type="edu.ptit.quynhhtn.entity.WishList"*/-->
+                <h3 class="subtitle" th:text="${#lists.isEmpty(listDetails)?'Không có sản phẩm nào':summaryText}"></h3>
+            </div>
+            <div class="shopping-cart wishlist-cart" th:unless="${#lists.isEmpty(listDetails)}">
+                <div class="row header">
+                    <div class="cell">
+                        <h5>Chi tiết</h5>
+                    </div>
+                    <div class="cell">
+                        <h5>Đơn giá</h5>
+                    </div>
+                    <div class="cell">
+                        <h5>Số lượng</h5>
+                    </div>
+                    <div class="cell">
+                    </div>
+                </div>
+
+                <th:block th:each="wlDet : ${listDetails}">
+                    <div th:replace="fragments/wishlist_item :: wishlist_item" th:with="wlDet=${wlDet}"></div>
+                </th:block>
+            </div>
+            <ul class="pager" th:unless="${#lists.isEmpty(listDetails)}">
+                <li>
+                    <a th:href="@{/wishlist.html(page=*{currentPage.longValue()-1},categories=*{currentCate})}" class="button prev">
+                        <svg class="svg-arrow">
+                            <use xlink:href="#svg-arrow"></use>
+                        </svg>
+                    </a>
+                </li>
+                <th:block th:each="i: ${#numbers.sequence(1, lastPage)}">
+                    <li th:class="${currentPage==i?'selected':''}"><a th:href="@{/wishlist.html(page=*{i},categories=*{currentCate})}" th:text="${i}"></a></li>
+                </th:block>
+                <li>
+                    <a th:href="@{/wishlist.html(page=*{currentPage.longValue()+1},categories=*{currentCate})}" class="button next">
+                        <svg class="svg-arrow">
+                            <use xlink:href="#svg-arrow"></use>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+<div th:replace="fragments/footer :: footer"></div>
+<script src="js/full-view.js"></script>
+</body>
+</html>
+
