@@ -1,0 +1,10 @@
+/.idea
+/.mvn
+/.git
+/target
+/.idea/*
+*.iml
+*.gz
+*.log
+*.tmp
+*.zip

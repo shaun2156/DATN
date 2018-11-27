@@ -29,8 +29,7 @@ public class TestDBInitService {
     ItemDAO itemDAO;
 
     @Autowired
-    Person admin;
-
+    PersonDAO personDAO;
     @PostConstruct
     @Transactional
     public void initDB() {
@@ -88,7 +87,7 @@ public class TestDBInitService {
     }
 
     private void initAdminCustomer() {
-        Customer adminCustomer = new Customer(admin, "0394525333", "Shop Admin", new Date());
+        Customer adminCustomer = new Customer(personDAO.findPersonByUsername("admin").orElse(null), "0394525333", "Shop Admin", new Date());
         customerDAO.save(adminCustomer);
     }
 
