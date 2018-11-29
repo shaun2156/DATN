@@ -37,6 +37,8 @@ public class SiteConfig {
     @Autowired
     private PersonDAO personDAO;
 
+    private Person loggedInUser;
+
     @Bean("storeConfig")
     public Map<String, String> storeConfig() {
         Map<String, String> configs = new HashMap<>();
@@ -51,9 +53,11 @@ public class SiteConfig {
         return categoryDAO.findCategoryByName("root").orElse(new Category(1L, "root"));
     }
 
-    @Bean
-    public Person adminPerson(){
-        return personDAO.findPersonByUsername("admin").orElse(null);
+    public Person getLoggedInUser() {
+        return loggedInUser;
     }
 
+    public void setLoggedInUser(Person loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
 }

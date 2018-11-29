@@ -13,6 +13,7 @@ public class Category extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
 
+    @Column(unique = true)
     private String name;
 
     private String description;
@@ -27,7 +28,7 @@ public class Category extends BaseEntity {
     @JoinColumn(name = "parentCategoryId")
     private List<Category> subCategories;
 
-    @OneToMany(mappedBy = "categoryId", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "categoryId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Item> listItems;
 
     public Category(Long id, String name){

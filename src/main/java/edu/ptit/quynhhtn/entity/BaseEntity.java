@@ -26,17 +26,21 @@ public class BaseEntity {
 
     @PrePersist
     public void prePersist(){
-        Person editor = SiteConfig.getInstance().adminPerson();
-        setCreatedByPerson(editor);
-        setCreatedDate(new Date());
-        setUpdatedByPerson(editor);
-        setUpdatedDate(new Date());
+        Person editor = SiteConfig.getInstance().getLoggedInUser();
+        if(editor != null) {
+            setCreatedByPerson(editor);
+            setCreatedDate(new Date());
+            setUpdatedByPerson(editor);
+            setUpdatedDate(new Date());
+        }
     }
     @PreUpdate
     public void preUpdate(){
-        Person editor = SiteConfig.getInstance().adminPerson();
-        setUpdatedByPerson(editor);
-        setUpdatedDate(new Date());
+        Person editor = SiteConfig.getInstance().getLoggedInUser();
+        if(editor != null) {
+            setUpdatedByPerson(editor);
+            setUpdatedDate(new Date());
+        }
     }
 
     public Long getCreatedBy() {

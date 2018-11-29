@@ -30,16 +30,9 @@ public class TestDBInitService {
 
     @Autowired
     PersonDAO personDAO;
-    @PostConstruct
-    @Transactional
-    public void initDB() {
-//        testDataInitialization();
-    }
 
     @Transactional
     public void testDataInitialization() {
-        initAdminCustomer();
-        initStoreConfig();
         initCategory();
         initItem();
     }
@@ -84,21 +77,6 @@ public class TestDBInitService {
                 featuredProductDAO.save(ftProduct);
             }
         });
-    }
-
-    private void initAdminCustomer() {
-        Customer adminCustomer = new Customer(personDAO.findPersonByUsername("admin").orElse(null), "0394525333", "Shop Admin", new Date());
-        customerDAO.save(adminCustomer);
-    }
-
-
-    private void initStoreConfig() {
-        configDAO.save(new StoreConfig("store_name", "QH's Fashion"));
-        configDAO.save(new StoreConfig("store_address", "PTIT, Trần Phú, Hà Đông, Hà Nội"));
-        configDAO.save(new StoreConfig("store_phone", "0399 686 868"));
-        configDAO.save(new StoreConfig("store_email", "contact@qhshop.com"));
-        configDAO.save(new StoreConfig("store_about", "Shop chuyên cung cấp các mặt hàng thời trang, phụ kiện, quần áo. "));
-        configDAO.save(new StoreConfig("contact_description", "Mọi thắc mắc, giải đáp, vui lòng liên hệ với chúng tôi."));
     }
 
     private void initCategory() {

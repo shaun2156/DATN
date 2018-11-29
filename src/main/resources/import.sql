@@ -1,3 +1,8 @@
-INSERT INTO person(created_by, created_date, updated_by, updated_date, dob, email, full_name, password, phone, short_name, username) VALUE (null, NOW(), null, NOW(), "2018-09-30","contact@qhshop.com","Shop Admin","$2a$10$ekkmYAL.x6CJdG1cfaSBtuXWOkLGMRC9vG8ryhwyiI5baYjZd4mza","0399999999","sa","admin");
+INSERT INTO datn.store_config (config_id, config_key, config_value) VALUES (1, 'store_name', 'QH''s Fashion');
+INSERT INTO datn.store_config (config_id, config_key, config_value) VALUES (2, 'store_address', 'PTIT, Trần Phú, Hà Đông, Hà Nội');
+INSERT INTO datn.store_config (config_id, config_key, config_value) VALUES (3, 'store_phone', '0399 686 868');
+INSERT INTO datn.store_config (config_id, config_key, config_value) VALUES (4, 'store_email', 'contact@qhshop.com');
+INSERT INTO datn.store_config (config_id, config_key, config_value) VALUES (5, 'store_about', 'Shop chuyên cung cấp các mặt hàng thời trang, phụ kiện, quần áo');
+INSERT INTO datn.store_config (config_id, config_key, config_value) VALUES (6, 'contact_description', 'Mọi thắc mắc, giải đáp, vui lòng liên hệ với chúng tôi.');
 drop table if exists  persistent_logins;
 create table persistent_logins (username varchar(64) not null, series varchar(64) primary key, token varchar(64) not null, last_used timestamp not null)

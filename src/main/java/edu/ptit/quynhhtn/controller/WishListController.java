@@ -32,9 +32,6 @@ public class WishListController {
     CustomerDAO customerDAO;
 
     @Autowired
-    Person currentPerson;
-
-    @Autowired
     WishListService wishListService;
 
     WishList wishList;

@@ -1,5 +1,6 @@
 package edu.ptit.quynhhtn.controller;
 
+import edu.ptit.quynhhtn.config.SiteConfig;
 import edu.ptit.quynhhtn.dao.CustomerDAO;
 import edu.ptit.quynhhtn.dao.PersonDAO;
 import edu.ptit.quynhhtn.entity.Customer;
@@ -55,6 +56,7 @@ public class UserController {
             RegisterFrm registerFrm,
             Principal principal, Model model){
         if(principal != null) {
+            SiteConfig.getInstance().setLoggedInUser(personDAO.findPersonByUsername(principal.getName()).orElse(null));
             return "redirect:index.html";
         }
         else{
