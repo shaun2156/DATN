@@ -265,7 +265,7 @@ select::-ms-expand {
 		}
 	}
 
-	input[type="text"], input[type="password"], textarea {
+	input[type="text"], input[type="password"], input[type="date"], textarea {
 		width: 100%;
 		border: 1px solid $border;
 		border-radius: 2px;

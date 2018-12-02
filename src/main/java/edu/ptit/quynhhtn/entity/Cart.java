@@ -1,6 +1,7 @@
 package edu.ptit.quynhhtn.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,6 +21,10 @@ public class Cart extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "customerId", insertable = false, updatable = false)
     private Customer customer;
+
+    public Cart() {
+        cartItemList = new ArrayList<>();
+    }
 
     public Long getCartId() {
         return cartId;
@@ -62,5 +67,10 @@ public class Cart extends BaseEntity {
             setCustomerId(customer.getCustomerId());
         }
         this.customer = customer;
+    }
+
+    public void calculateTotalPrice() {
+        totalPrice = 0;
+        this.totalPrice = getCartItemList().stream().mapToDouble(items -> items.getItemDetail().getItem().getCurrentPrice() * items.getQuantity()).sum();
     }
 }

@@ -140,6 +140,18 @@
             }});
     });
 
+    $('.remove-cart-btn').click(function () {
+        var url = $(this).attr("href");
+        console.log(url);
+        $.ajax({
+            url: url, success: function (result) {
+            }
+        });
+        setTimeout(function () {
+            location.reload();
+        }, 1000);
+    });
+
 	/*----------------------
 		PICTURE SELECTION
 	----------------------*/
@@ -151,8 +163,8 @@
 		var me = $(this),
 			src = me.find('figure > img').attr('src'),
 			image = me.parents().eq(1).find('> div figure > img');
-			
-		// remove 'selected' class on all items	
+
+        // remove 'selected' class on all items
 		clearSelection(me.parent().children());
 
 		// select current item and change image
@@ -183,8 +195,8 @@
 
 		$me.bind('click', {color: color}, selectItem);
 	});
-	
-	function selectItem(e) {
+
+    function selectItem(e) {
 		if($(this).hasClass('selected')) return;
 
 		var $me = $(this);

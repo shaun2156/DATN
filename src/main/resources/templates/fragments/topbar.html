@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -108,6 +108,7 @@
                 <input type="text" name="search" id="search" placeholder="Tìm kiếm trong danh mục...">
                 <input type="image" src="images/icons/search-icon.png" alt="search-icon">
             </form>
+            <!--/*@thymesVar id="cart" type="edu.ptit.quynhhtn.entity.Cart"*/-->
             <div class="westeros-dropdown-container">
                     <div class="cart-control westeros-dropdown-control">
                     <svg class="svg-order-box">
@@ -117,96 +118,49 @@
                         <use xlink:href="#svg-arrow"></use>
                     </svg>
                     <h6>Giỏ hàng của bạn</h6>
-                    <p class="cart-content-short">(0)</p>
-                    <p class="cart-content-long">0 sản phẩm -</p>
-                    <p class="highlighted">VND 0</p>
+                        <p class="cart-content-short" th:text="${'(' + cart.getCartItemList().size() + ')'}"></p>
+                        <p class="cart-content-long" th:text="${cart.getCartItemList().size() + ' sản phẩm - '}"></p>
+                        <p class="highlighted"
+                           th:text="${'VND ' + #numbers.formatDecimal(cart.totalPrice,0,'COMMA',0,'NONE')}"></p>
                 </div>
                 <ul class="cart westeros-dropdown">
-                    <li class="item clearfix">
-                        <div class="picture">
-                            <figure class="liquid">
-                                <img src="images/items/02.png" alt="product1">
-                            </figure>
-                        </div>
-                        <div class="description">
-                            <p class="highlighted category">T-Shirts</p>
-                            <h6>The Crazy Bunny</h6>
-                        </div>
-                        <div class="quantity">
-                            <h6>1</h6>
-                        </div>
-                        <div class="price">
-                            <p class="highlighted">$86.00</p>
-                        </div>
-                        <img src="images/items/remove.png" alt="remove">
-                    </li>
-                    <!-- /CART ITEM -->
-
-                    <!-- CART ITEM -->
-                    <li class="item clearfix">
-                        <div class="picture">
-                            <figure class="liquid">
-                                <img src="images/items/33.png" alt="product1">
-                            </figure>
-                        </div>
-                        <div class="description">
-                            <p class="highlighted category">Phone Cases</p>
-                            <h6>I-Ladyskull</h6>
-                        </div>
-                        <div class="quantity">
-                            <h6>2</h6>
-                        </div>
-                        <div class="price">
-                            <p class="highlighted">$48.00</p>
-                        </div>
-                        <img src="images/items/remove.png" alt="remove">
-                    </li>
-                    <!-- /CART ITEM -->
-
-                    <!-- CART ITEM -->
-                    <li class="item clearfix">
-                        <div class="picture">
-                            <figure class="liquid">
-                                <img src="images/items/32.png" alt="product1">
-                            </figure>
-                        </div>
-                        <div class="description">
-                            <p class="highlighted category">Custom Sneakers</p>
-                            <h6>The Devil Walks</h6>
-                        </div>
-                        <div class="quantity">
-                            <h6>2</h6>
-                        </div>
-                        <div class="price">
-                            <p class="highlighted">$86.00</p>
-                        </div>
-                        <img src="images/items/remove.png" alt="remove">
-                    </li>
-                    <!-- /CART ITEM -->
-
-                    <!-- TOTAL -->
+                    <th:block th:each="cartItem : ${cart.cartItemList}">
+                        <li class="item clearfix">
+                            <div class="picture">
+                                <figure class="liquid">
+                                    <img th:src="${cartItem.itemDetail.item.imageUrls.get(0).url}">
+                                </figure>
+                            </div>
+                            <div class="description">
+                                <p class="highlighted category" th:text="${cartItem.itemDetail.item.category.name}"></p>
+                                <h6 th:text="${cartItem.itemDetail.item.name}"></h6>
+                            </div>
+                            <div class="quantity">
+                                <h6 th:text="${#numbers.formatDecimal(cartItem.quantity,0,0)}"></h6>
+                            </div>
+                            <div class="price">
+                                <p class="highlighted"
+                                   th:text="${#numbers.formatDecimal(cartItem.quantity * cartItem.itemDetail.item.currentPrice,0,'COMMA',0,'NONE')}"></p>
+                            </div>
+                            <img class="remove-cart-btn"
+                                 th:href="${'/removeCart?item=' + cartItem.itemDetail.item.itemId}"
+                                 src="images/items/remove.png" alt="remove">
+                        </li>
+                    </th:block>
                     <li class="total clearfix">
                         <div>
-                            <h6>$220.00</h6>
-                            <h6>$15.50</h6>
-                            <p class="highlighted">$235.50</p>
+                            <p class="highlighted"
+                               th:text="${#numbers.formatDecimal(cart.totalPrice,0,'COMMA',0,'NONE')} + ' VND'"></p>
                         </div>
                         <div>
-                            <h6>Subtotal</h6>
-                            <h6>Shipping</h6>
-                            <h6>Total</h6>
+                            <h6>Tổng cộng</h6>
                         </div>
                     </li>
-                    <!-- /TOTAL -->
-
-                    <!-- ORDER -->
                     <li class="order clearfix">
-                        <a href="checkout.html" class="button">Checkout</a>
-                        <a href="cart.html" class="button secondary">Go to Cart</a>
+                        <a href="checkout.html" class="button">Thanh Toán</a>
+                        <a href="cart.html" class="button secondary">Chi tiết</a>
                     </li>
-                    <!-- /ORDER -->
                 </ul>
-                <!-- /CART -->
             </div>
         </section>
     </div>

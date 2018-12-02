@@ -1,5 +1,7 @@
 package edu.ptit.quynhhtn.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,9 +15,15 @@ public class ShipmentInfo extends BaseEntity{
 
     private Long shmServiceId;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date plannedDate;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date actualDate;
+
+    private String address;
+
+    private String receiverName;
 
     @OneToOne
     @JoinColumn(name = "orderId", insertable = false, updatable = false)
@@ -85,5 +93,21 @@ public class ShipmentInfo extends BaseEntity{
             setShmServiceId(shipmentService.getShmServiceId());
         }
         this.shipmentService = shipmentService;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getReceiverName() {
+        return receiverName;
+    }
+
+    public void setReceiverName(String receiverName) {
+        this.receiverName = receiverName;
     }
 }

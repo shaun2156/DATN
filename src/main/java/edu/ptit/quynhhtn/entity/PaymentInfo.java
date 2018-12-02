@@ -10,6 +10,14 @@ public class PaymentInfo extends BaseEntity{
 
     private Long orderId;
 
+    private String billingName;
+
+    private String billingEmail;
+
+    private String billingPhone;
+
+    private String billingAddress;
+
     private String paymentOption;
 
     private String paymentTerm;
@@ -69,5 +77,37 @@ public class PaymentInfo extends BaseEntity{
             setOrderId(order.getOrderId());
         }
         this.order = order;
+    }
+
+    public String getBillingName() {
+        return billingName;
+    }
+
+    public void setBillingName(String billingName) {
+        this.billingName = billingName;
+    }
+
+    public String getBillingEmail() {
+        return billingEmail;
+    }
+
+    public void setBillingEmail(String billingEmail) {
+        this.billingEmail = billingEmail;
+    }
+
+    public String getBillingPhone() {
+        return billingPhone;
+    }
+
+    public void setBillingPhone(String billingPhone) {
+        this.billingPhone = billingPhone;
+    }
+
+    public String getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(String billingAddress) {
+        this.billingAddress = billingAddress;
     }
 }

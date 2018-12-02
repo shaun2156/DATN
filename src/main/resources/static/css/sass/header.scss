@@ -86,8 +86,8 @@ header {
 		float: left;
 		position: relative;
 		margin-top: 4px;
-		
-		select, input[type="text"], input[type="password"] {
+
+		select, input[type="text"], input[type="password"], input[type="date"] {
 			float: left;
 			height: 38px;
 			border: 1px solid $border;

@@ -1,718 +1,260 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
-	<link rel="stylesheet" href="css/style.css">
-	<!-- favicon -->
-	<link rel="icon" href="favicon.ico">
-	<title>Westeros | Checkout</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- favicon -->
+    <link rel="icon" href="favicon.ico">
+    <title th:text="${store_name + '| Thanh toán'}">Westeros | Checkout</title>
 </head>
 <body>
 <div th:replace="fragments/header :: header"></div>
 
 <!-- SHOP -->
-	<div id="shop-wrap">
-		<section id="shop" class="right">
-			<!-- SIDEBAR CONTROL -->
-			<div class="sidebar-control"></div>
-			<!-- /SIDEBAR CONTROL -->
-
-			<!-- SHOP SIDEBAR -->
-			<aside class="shop-sidebar checkout-cart">
-				<!-- SIDEBAR CONTROL -->
-				<svg class="svg-plus sidebar-control">
-					<use xlink:href="#svg-plus"></use>
-				</svg>
-				<!-- /SIDEBAR CONTROL -->
-
-				<h3 class="title">Checkout Progress</h3>
-				<div class="checkout-progress">
-					<h5>
-						Billing Adress
-						<!-- SVG CHECK -->
-						<svg class="svg-check">
-							<use xlink:href="#svg-check"></use>
-						</svg>
-						<!-- /SVG CHECK -->
-					</h5>
-					<h5>
-						Shipping Adress
-						<!-- SVG CHECK -->
-						<svg class="svg-plus">
-							<use xlink:href="#svg-plus"></use>
-						</svg>
-						<!-- /SVG CHECK -->
-					</h5>
-					<h5>
-						Shipping Method
-						<!-- SVG CHECK -->
-						<svg class="svg-check">
-							<use xlink:href="#svg-check"></use>
-						</svg>
-						<!-- /SVG CHECK -->
-					</h5>
-					<h5>Payment Method</h5>
-				</div>
-
-				<h3 class="title">Cart Total</h3>
-				<!-- CART TOTAL -->
-				<div class="cart-total">
-					<!-- SUBTOTAL -->
-					<div class="subtotal">
-						<h5>Cart Subtotal</h5>
-						<h5>$361.00</h5>
-					</div>
-					<!-- /SUBTOTAL -->
-
-					<!-- SUBTOTAL -->
-					<div class="subtotal">
-						<h5>Shipping</h5>
-						<h5>$25.50</h5>
-					</div>
-					<!-- /SUBTOTAL -->
-
-					<!-- SUBTOTAL -->
-					<div class="subtotal">
-						<h5>Coupon Code</h5>
-						<h5>-$5.00</h5>
-					</div>
-					<!-- /SUBTOTAL -->
-
-					<!-- TOTAL -->
-					<div class="total">
-						<h5>Total Order</h5>
-						<h5>$381.50</h5>
-					</div>
-					<!-- /TOTAL -->
-				</div>
-				<!-- /CART TOTAL -->
-			</aside>
-			<!-- /SHOP SIDEBAR -->
-
-			<!-- SHOP PRODUCTS -->
-			<div class="shop-products">
-				<h3 class="title">Order Checkout</h3>
-				<!-- PROFILE INFO -->
-				<div class="profile-info">
-					<!-- PROFILE HEADER -->
-					<h5 class="profile-header">
-						<span>01</span>Checkout Method
-						<!-- SVG PLUS -->
-						<svg class="plus">
-							<rect class="vertical" x="4" width="4" height="12"/>
-							<rect y="4" width="12" height="4"/>
-						</svg>
-						<!-- /SVG PLUS -->
-					</h5>
-					<!-- /PROFILE HEADER -->
-
-					<!-- PROFILE DATA -->
-					<div class="profile-data">
-						<!-- PROFILE COLUMN -->
-						<div class="profile-column">
-							<h5>New Customer</h5>
-							<div class="featured-form">
-								<form class="westeros-form">
-									<label class="rl-label">Register or stay as a guest</label>
-									<div class="full-input">
-										<input type="radio" id="op1" name="register_guest" value="op1" checked>
-										<label for="op1"><span class="radio"><span></span></span>Register Account</label>
-									</div>
-									<div class="full-input">
-										<input type="radio" id="op2" name="register_guest" value="op2">
-										<label for="op2"><span class="radio"><span></span></span>Stay as Guest</label>
-									</div>
-									<p>Lorem ipsum dolor sit amet, consectetur er adipisicing elit, sed do eiusmod eru tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim darea veniam.</p>
-									<button class="button login">Continue</button>
-								</form>
-							</div>
-						</div>
-						<!-- /PROFILE COLUMN -->
-
-						<!-- PROFILE COLUMN -->
-						<div class="profile-column">
-							<h5>Login</h5>
-							<div class="featured-form">
-								<form class="westeros-form">
-									<label class="rl-label">Your Email Address</label>
-									<input type="text" placeholder="Enter your email address here...">
-									<label class="rl-label">Your Password</label>
-									<input type="text" placeholder="Enter your password here...">
-									<a href="#" class="fp-msg">Forgot your password? Click here!</a>
-									<button class="button login">Login Now!</button>
-								</form>
-							</div>
-						</div>
-						<!-- /PROFILE COLUMN -->
-					</div>
-					<!-- /PROFILE DATA -->
-
-					<!-- PROFILE HEADER -->
-					<h5 class="profile-header">
-						<span>02</span>Billing Information
-						<!-- SVG PLUS -->
-						<svg class="plus">
-							<rect class="vertical" x="4" width="4" height="12"/>
-							<rect y="4" width="12" height="4"/>
-						</svg>
-						<!-- /SVG PLUS -->
-					</h5>
-					<!-- /PROFILE HEADER -->
-
-					<!-- PROFILE DATA -->
-					<div class="profile-data">
-						<div class="featured-form">
-							<form class="westeros-form">
-								<div>
-									<label class="rl-label required">First Name</label>
-									<input type="text" placeholder="Enter your first name here...">
-								</div>
-								<div>
-									<label class="rl-label required">Last Name</label>
-									<input type="text" placeholder="Enter your last name here...">
-								</div>
-								<div>
-									<label class="rl-label required">Email Address</label>
-									<input type="text" placeholder="Enter your email address here...">
-								</div>
-								<div>
-									<label class="rl-label required">Phone Number</label>
-									<input type="text" placeholder="Enter your phone number here...">
-								</div>
-								<div>
-									<label class="rl-label">Company Name</label>
-									<input type="text" placeholder="Enter your company name here...">
-								</div>
-								<div>
-									<label class="rl-label required">Address</label>
-									<input type="text" placeholder="Enter your billing address here...">
-								</div>
-								<div>
-									<label class="rl-label required">Country</label>
-									<label for="country1">
-										<select name="country" id="country1">
-											<option value="0">Select your country...</option>
-											<option value="1">United States</option>
-											<option value="2">England</option>
-											<option value="3">France</option>
-											<option value="4">Spain</option>
-										</select>
-										<!-- SVG ARROW -->
-										<svg class="svg-arrow select-arrow">
-											<use xlink:href="#svg-arrow"></use>
-										</svg>
-										<!-- /SVG ARROW -->
-									</label>
-								</div>
-								<div>
-									<label class="rl-label required">Town / City</label>
-									<input type="text" placeholder="Enter your town / city here...">
-								</div>
-								<div>
-									<label class="rl-label required">State / Province</label>
-									<input type="text" placeholder="Enter your state / province here...">
-								</div>
-								<div>
-									<label class="rl-label required">Postcode / Zip</label>
-									<input type="text" placeholder="Enter your zipcode here...">
-								</div>
-								<div>
-									<div class="full-input">
-										<input type="checkbox" id="autocomplete" name="autocomplete" checked>
-										<label for="autocomplete"><span class="checkbox"><span></span></span>Autocomplete with your profile info</label>
-									</div>
-									<div class="full-input">
-										<input type="checkbox" id="shipping-address" name="shipping-address" checked>
-										<label for="shipping-address"><span class="checkbox"><span></span></span>Ship to same address as billing</label>
-									</div>
-								</div>
-								<div>
-									<button class="button login">Continue</button>
-								</div>
-							</form>
-						</div>
-					</div>
-					<!-- /PROFILE DATA -->
-
-					<!-- PROFILE HEADER -->
-					<h5 class="profile-header">
-						<span>03</span>Shipping Information
-						<!-- SVG PLUS -->
-						<svg class="plus">
-							<rect class="vertical" x="4" width="4" height="12"/>
-							<rect y="4" width="12" height="4"/>
-						</svg>
-						<!-- /SVG PLUS -->
-					</h5>
-					<!-- /PROFILE HEADER -->
-
-					<!-- PROFILE DATA -->
-					<div class="profile-data">
-						<div class="featured-form">
-							<form class="westeros-form" id="checkout-form">
-								<div>
-									<label class="rl-label required">First Name</label>
-									<input type="text" placeholder="Enter your first name here...">
-								</div>
-								<div>
-									<label class="rl-label required">Last Name</label>
-									<input type="text" placeholder="Enter your last name here...">
-								</div>
-								<div>
-									<label class="rl-label required">Email Address</label>
-									<input type="text" placeholder="Enter your email address here...">
-								</div>
-								<div>
-									<label class="rl-label required">Phone Number</label>
-									<input type="text" placeholder="Enter your phone number here...">
-								</div>
-								<div>
-									<label class="rl-label">Company Name</label>
-									<input type="text" placeholder="Enter your company name here...">
-								</div>
-								<div>
-									<label class="rl-label required">Address</label>
-									<input type="text" placeholder="Enter your billing address here...">
-								</div>
-								<div>
-									<label class="rl-label required">Country</label>
-									<label for="country2">
-										<select name="country" id="country2">
-											<option value="0">Select your country...</option>
-											<option value="1">United States</option>
-											<option value="2">England</option>
-											<option value="3">France</option>
-											<option value="4">Spain</option>
-										</select>
-										<!-- SVG ARROW -->
-										<svg class="svg-arrow select-arrow">
-											<use xlink:href="#svg-arrow"></use>
-										</svg>
-										<!-- /SVG ARROW -->
-									</label>
-								</div>
-								<div>
-									<label class="rl-label required">Town / City</label>
-									<input type="text" placeholder="Enter your town / city here...">
-								</div>
-								<div>
-									<label class="rl-label required">State / Province</label>
-									<input type="text" placeholder="Enter your state / province here...">
-								</div>
-								<div>
-									<label class="rl-label required">Postcode / Zip</label>
-									<input type="text" placeholder="Enter your zipcode here...">
-								</div>
-								<div class="full-input">
-									<label class="rl-label">Special Requests</label>
-									<textarea placeholder="Write your special requests or notes for us to know here..."></textarea>
-								</div>
-								<div class="full-input"></div>
-								<div>
-									<input type="checkbox" id="autocomplete2" name="autocomplete2" checked>
-									<label for="autocomplete2"><span class="checkbox"><span></span></span>Autocomplete with your profile info</label>
-								</div>
-								<div>
-									<button class="button login">Continue</button>
-								</div>
-							</form>
-						</div>
-					</div>
-					<!-- /PROFILE DATA -->
-
-					<!-- PROFILE HEADER -->
-					<h5 class="profile-header">
-						<span>04</span>Shipping Method
-						<!-- SVG PLUS -->
-						<svg class="plus">
-							<rect class="vertical" x="4" width="4" height="12"/>
-							<rect y="4" width="12" height="4"/>
-						</svg>
-						<!-- /SVG PLUS -->
-					</h5>
-					<!-- /PROFILE HEADER -->
-
-					<!-- PROFILE DATA -->
-					<div class="profile-data">
-						<div class="featured-form">
-							<form class="westeros-form">
-								<div class="full-input">
-									<input type="radio" id="free-shipping" name="shipping_method" value="free-shipping">
-									<label class="rl-label" for="free-shipping"><span class="radio"><span></span></span>Free ($0.00)</label>
-									<p>Lorem ipsum dolor sit amet, consectetur er adipisicing elit, sed do eiusmod eru tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim darea veniam.</p>
-								</div>
-
-								<div class="full-input">
-									<input type="radio" id="domestic-shipping" name="shipping_method" value="domestic-shipping">
-									<label class="rl-label" for="domestic-shipping"><span class="radio"><span></span></span>Domestic Flat Rate ($50.00)</label>
-									<p>Lorem ipsum dolor sit amet, consectetur er adipisicing elit, sed do eiusmod eru tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim darea veniam. Lorem ipsum dolor sit amet, consectetur er adipisicing elit, sed do eiusmod eru tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim darea veniam.</p>
-								</div>
-
-								<div class="full-input">
-									<input type="radio" id="overnight-shipping" name="shipping_method" value="overnight-shipping" checked>
-									<label class="rl-label" for="overnight-shipping"><span class="radio"><span></span></span>Overnight Delivery ($100.00)</label>
-									<p>Lorem ipsum dolor sit amet, consectetur er adipisicing elit, sed do eiusmod eru tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim darea veniam. Lorem ipsum dolor sit amet.</p>
-								</div>
-
-								<button class="button login">Continue</button>
-							</form>
-						</div>
-					</div>
-					<!-- /PROFILE DATA -->
-
-					<!-- PROFILE HEADER -->
-					<h5 class="profile-header">
-						<span>05</span>Payment Method
-						<!-- SVG PLUS -->
-						<svg class="plus">
-							<rect class="vertical" x="4" width="4" height="12"/>
-							<rect y="4" width="12" height="4"/>
-						</svg>
-						<!-- /SVG PLUS -->
-					</h5>
-					<!-- /PROFILE HEADER -->
-
-					<!-- PROFILE DATA -->
-					<div class="profile-data">
-						<div class="featured-form">
-							<form class="westeros-form">
-								<div class="full-input">
-									<input type="radio" id="bank" name="payment_method" value="bank">
-									<label class="rl-label" for="bank"><span class="radio"><span></span></span>Direct Bank Transfer</label>
-									<p>Lorem ipsum dolor sit amet, consectetur er adipisicing elit, sed do eiusmod eru tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim darea veniam.</p>
-								</div>
-
-								<div class="full-input">
-									<input type="radio" id="paypal" name="payment_method" value="paypal">
-									<label class="rl-label" for="paypal"><span class="radio"><span></span></span>Cheque Payment</label>
-								</div>
-
-								<div class="full-input">
-									<input type="radio" id="cheque" name="payment_method" value="cheque" checked>
-									<label class="rl-label" for="cheque"><span class="radio"><span></span></span>Paypal</label>
-								</div>
-
-								<button class="button login">Continue</button>
-							</form>
-						</div>
-					</div>
-					<!-- /PROFILE DATA -->
-
-					<!-- PROFILE HEADER -->
-					<h5 class="profile-header">
-						<span>06</span>Order Review
-						<!-- SVG PLUS -->
-						<svg class="plus">
-							<rect class="vertical" x="4" width="4" height="12"/>
-							<rect y="4" width="12" height="4"/>
-						</svg>
-						<!-- /SVG PLUS -->
-					</h5>
-					<!-- /PROFILE HEADER -->
-
-					<!-- PROFILE DATA -->
-					<div class="profile-data full">
-						<!-- SHOPPING CART -->
-						<div class="shopping-cart order">
-							<!-- ROW -->
-							<div class="row header">
-								<!-- CELL -->
-								<div class="cell">
-									<h5>Product Details</h5>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<h5>Code Number</h5>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<h5>Unit Price</h5>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<h5>Quantity</h5>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<h5>Subtotal</h5>			
-								</div>
-								<!-- /CELL -->
-							</div>
-							<!-- /ROW -->
-
-							<!-- ROW -->
-							<div class="row">
-								<!-- CELL -->
-								<div class="cell cart-item">
-									<p class="highlighted">T-Shirts</p>
-									<h3>The Devil Pin</h3>
-									<h6>Size: <span>Large</span></h6>
-									<h6>Color: <span>Black</span></h6>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">dp603b</p>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">$54.00</p>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">2</p>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">$108.00</p>
-								</div>
-								<!-- /CELL -->
-							</div>
-							<!-- /ROW -->
-
-							<!-- ROW -->
-							<div class="row">
-								<!-- CELL -->
-								<div class="cell cart-item">
-									<p class="highlighted">Phone Cases</p>
-									<h3>Dial Z For Zombie</h3>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">dz583g</p>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">$26.00</p>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">3</p>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">$78.00</p>
-								</div>
-								<!-- /CELL -->
-							</div>
-							<!-- /ROW -->
-
-							<!-- ROW -->
-							<div class="row">
-								<!-- CELL -->
-								<div class="cell cart-item">
-									<p class="highlighted">Custom Sneakers</p>
-									<h3>The Devil Walks</h3>
-									<h6>Size: <span>6</span></h6>
-									<h6>Color: <span>Red</span></h6>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">dw682r</p>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">$43.00</p>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">1</p>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">$43.00</p>
-								</div>
-								<!-- /CELL -->
-							</div>
-							<!-- /ROW -->
-
-							<!-- ROW -->
-							<div class="row">
-								<!-- CELL -->
-								<div class="cell cart-item">
-									<p class="highlighted">Pin Badges</p>
-									<h3>Mo Monster</h3>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">mm205b</p>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">$2.00</p>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">3</p>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">$6.00</p>
-								</div>
-								<!-- /CELL -->
-							</div>
-							<!-- /ROW -->
-
-							<!-- ROW -->
-							<div class="row">
-								<!-- CELL -->
-								<div class="cell cart-item">
-									<p class="highlighted">T-Shirts</p>
-									<h3>The Happy Pastry</h3>
-									<h6>Size: <span>Medium</span></h6>
-									<h6>Color: <span>Silver</span></h6>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">hp453s</p>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">$63.00</p>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">2</p>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">$126.00</p>
-								</div>
-								<!-- /CELL -->
-							</div>
-							<!-- /ROW -->
-						</div>
-						<!-- /SHOPPING-CART -->
-
-						<!-- SHOPPING-CART -->
-						<div class="shopping-cart order summary">
-							<!-- ROW -->
-							<div class="row">
-								<!-- CELL -->
-								<div class="cell cart-summary">
-									<h3>Cart Subtotal:</h3>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">$361.00</p>
-								</div>
-								<!-- /CELL -->
-							</div>
-							<!-- /ROW -->
-
-							<!-- ROW -->
-							<div class="row">
-								<!-- CELL -->
-								<div class="cell cart-summary">
-									<h3>Shipping and Handling:</h3>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">$25.50</p>
-								</div>
-								<!-- /CELL -->
-							</div>
-							<!-- /ROW -->
-
-							<!-- ROW -->
-							<div class="row">
-								<!-- CELL -->
-								<div class="cell cart-summary">
-									<h3>Promotional Code:</h3>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">-$5.00</p>
-								</div>
-								<!-- /CELL -->
-							</div>
-							<!-- /ROW -->
-
-							<!-- ROW -->
-							<div class="row">
-								<!-- CELL -->
-								<div class="cell cart-summary">
-									<h3>Order Total:</h3>
-								</div>
-								<!-- /CELL -->
-
-								<!-- CELL -->
-								<div class="cell">
-									<p class="highlighted">$381.50</p>
-								</div>
-								<!-- /CELL -->
-							</div>
-							<!-- /ROW -->
-						</div>
-						<!-- /SHOPPING-CART -->
-					</div>
-					<!-- /PROFILE DATA -->
-				</div>
-				<!-- /PROFILE INFO -->
-
-				<button form="checkout-form" class="button checkout-button">Place order now!</button>
-			</div>
-			<!-- /SHOP PRODUCTS -->
-			<div class="clearfix"></div>
-		</section>
-	</div>
-	<!-- /SHOP -->
-
+<div id="shop-wrap">
+    <section id="shop" class="right">
+        <div class="sidebar-control"></div>
+        <aside class="shop-sidebar checkout-cart">
+            <svg class="svg-plus sidebar-control">
+                <use xlink:href="#svg-plus"></use>
+            </svg>
+            <h3 class="title">Tổng chi phí giỏ hàng</h3>
+            <div class="cart-total">
+                <div class="subtotal">
+                    <h5>Tổng cộng</h5>
+                    <h5 th:text="${#numbers.formatDecimal(cart.totalPrice,0,'COMMA',0,'NONE')} + ' VND'"></h5>
+                </div>
+                <div class="subtotal">
+                    <h5>Ship hàng miễn phí</h5>
+                    <h5></h5>
+                </div>
+                <div class="total">
+                    <h5>Tổng đơn hàng</h5>
+                    <h5 th:text="${#numbers.formatDecimal(cart.totalPrice,0,'COMMA',0,'NONE')} + ' VND'"></h5>
+                </div>
+            </div>
+        </aside>
+        <div class="shop-products">
+            <h3 class="title">Thông tin đơn hàng</h3>
+            <div class="profile-info">
+                <!--<form class="westeros-form" th:object="${orderFrm}">-->
+                <h5 class="profile-header">
+                    <span>01</span>Thông tin thanh toán
+                    <svg class="plus">
+                        <rect class="vertical" x="4" width="4" height="12"/>
+                        <rect y="4" width="12" height="4"/>
+                    </svg>
+                </h5>
+                <div class="profile-data">
+                    <div class="featured-form">
+                        <form class="westeros-form" th:object="${orderFrm}" action="#" th:action="@{/checkout.html}"
+                              method="post">
+                            <div>
+                                <label class="rl-label required">Họ tên</label>
+                                <input type="text" th:field="*{paymentInfo.billingName}"
+                                       placeholder="Nhập tên đầy đủ...">
+                            </div>
+                            <div>
+                                <label class="rl-label required">Địa chỉ</label>
+                                <input type="text" th:field="*{paymentInfo.billingAddress}"
+                                       placeholder="Địa chỉ thanh toán...">
+                            </div>
+                            <div>
+                                <label class="rl-label required">Email</label>
+                                <input type="text" th:field="*{paymentInfo.billingEmail}" placeholder="Nhập email...">
+                            </div>
+                            <div>
+                                <label class="rl-label required">Số điện thoại</label>
+                                <input type="text" th:field="*{paymentInfo.billingPhone}"
+                                       placeholder="Nhập số điện thoại...">
+                            </div>
+                            <div></div>
+                            <div class="full-input">
+                                <button class="button login">Lưu thay đổi</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <h5 class="profile-header">
+                    <span>02</span>Thông tin giao hàng
+                    <svg class="plus">
+                        <rect class="vertical" x="4" width="4" height="12"/>
+                        <rect y="4" width="12" height="4"/>
+                    </svg>
+                </h5>
+                <div class="profile-data">
+                    <div class="featured-form">
+                        <form class="westeros-form" th:object="${orderFrm}" action="#" th:action="@{/checkout.html}"
+                              method="post">
+                            <div>
+                                <label class="rl-label required">Họ tên người nhận</label>
+                                <input type="text" th:field="*{shipmentInfo.receiverName}"
+                                       placeholder="Nhập tên đầy đủ...">
+                            </div>
+                            <div>
+                                <label class="rl-label required">Địa chỉ giao hàng</label>
+                                <input type="text" th:field="*{shipmentInfo.address}"
+                                       placeholder="Địa chỉ giao hàng...">
+                            </div>
+                            <div>
+                                <label class="rl-label required">Ngày giao</label>
+                                <input type="date" th:field="*{shipmentInfo.plannedDate}"
+                                       placeholder="Ngày giao mong muốn...">
+                            </div>
+                            <div class="full-input">
+                                <button class="button login">Lưu thay đổi</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <h5 class="profile-header">
+                    <span>03</span>Phương thức giao hàng
+                    <svg class="plus">
+                        <rect class="vertical" x="4" width="4" height="12"/>
+                        <rect y="4" width="12" height="4"/>
+                    </svg>
+                </h5>
+                <div class="profile-data">
+                    <div class="featured-form">
+                        <form class="westeros-form">
+                            <div class="full-input">
+                                <input type="radio" id="free-shipping" name="shipping_method" value="free-shipping"
+                                       checked>
+                                <label class="rl-label" for="free-shipping"><span class="radio"><span></span></span>Giao
+                                    hàng miễn phí</label>
+                                <p>Chương trình giao hàng miễn phí, giao hàng trong 2h</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <h5 class="profile-header">
+                    <span>04</span>Phương thức thanh toán
+                    <svg class="plus">
+                        <rect class="vertical" x="4" width="4" height="12"/>
+                        <rect y="4" width="12" height="4"/>
+                    </svg>
+                </h5>
+                <div class="profile-data">
+                    <div class="featured-form">
+                        <form class="westeros-form" th:object="${orderFrm}" method="post" action="#"
+                              th:action="@{/checkout.html}">
+                            <input type="hidden" name="payment_method" value="true"/>
+                            <div class="full-input">
+                                <input type="radio" id="bank" th:field="*{paymentInfo.paymentOption}"
+                                       name="payment_method" value="bank">
+                                <label class="rl-label" for="bank"><span class="radio"><span></span></span>Chuyển
+                                    khoản</label>
+                                <p>Các ngân hàng hỗ trợ: VCB, Vietin, Techcombank,...</p>
+                            </div>
+
+                            <div class="full-input">
+                                <input type="radio" id="paypal" th:field="*{paymentInfo.paymentOption}"
+                                       name="payment_method" value="e-wallet">
+                                <label class="rl-label" for="paypal"><span class="radio"><span></span></span>Ví điện tử</label>
+                            </div>
+
+                            <div class="full-input">
+                                <input type="radio" id="cheque" th:field="*{paymentInfo.paymentOption}"
+                                       name="payment_method" value="cod" checked>
+                                <label class="rl-label" for="cheque"><span class="radio"><span></span></span>Thanh toán
+                                    khi nhận hàng</label>
+                            </div>
+                            <div class="full-input">
+                                <button class="button login">Lưu thay đổi</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <h5 class="profile-header">
+                    <span>05</span>Chi tiết đơn hàng
+                    <svg class="plus">
+                        <rect class="vertical" x="4" width="4" height="12"/>
+                        <rect y="4" width="12" height="4"/>
+                    </svg>
+                </h5>
+                <div class="profile-data full">
+                    <div class="shopping-cart order">
+                        <div class="row header">
+                            <div class="cell">
+                                <h5>Thông tin sản phẩm</h5>
+                            </div>
+                            <div class="cell">
+                                <h5>Mã sản phẩm</h5>
+                            </div>
+                            <div class="cell">
+                                <h5>Đơn giá</h5>
+                            </div>
+                            <div class="cell">
+                                <h5>Số lượng</h5>
+                            </div>
+                            <div class="cell">
+                                <h5>Thành tiền</h5>
+                            </div>
+                        </div>
+                        <th:block th:each="cartItem : ${cart.cartItemList}">
+                            <div class="row">
+                                <div class="cell cart-item">
+                                    <p class="highlighted" th:text="${cartItem.itemDetail.item.category.name}"></p>
+                                    <h3 th:text="${cartItem.itemDetail.item.name}"></h3>
+                                    <h6>Kích thước: <span th:text="${cartItem.itemDetail.size}"></span></h6>
+                                </div>
+                                <div class="cell">
+                                    <p class="highlighted" th:text="${cartItem.itemDetail.item.itemId}"></p>
+                                </div>
+                                <div class="cell">
+                                    <p class="highlighted"
+                                       th:text="${#numbers.formatDecimal(cartItem.itemDetail.item.currentPrice,0,'COMMA',0,'NONE')}"></p>
+                                </div>
+                                <div class="cell">
+                                    <p class="highlighted"
+                                       th:text="${#numbers.formatDecimal(cartItem.quantity,0,0)}"></p>
+                                </div>
+                                <div class="cell">
+                                    <p class="highlighted"
+                                       th:text="${#numbers.formatDecimal(cartItem.quantity * cartItem.itemDetail.item.currentPrice,0,'COMMA',0,'NONE')}"></p>
+                                </div>
+                            </div>
+                        </th:block>
+                    </div>
+                    <div class="shopping-cart order summary">
+                        <div class="row">
+                            <div class="cell cart-summary">
+                                <h3>Tổng giỏ hàng</h3>
+                            </div>
+                            <div class="cell">
+                                <p class="highlighted"
+                                   th:text="${#numbers.formatDecimal(cart.totalPrice,0,'COMMA',0,'NONE')}"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="cell cart-summary">
+                                <h3>Phí vận chuyển:</h3>
+                            </div>
+                            <div class="cell">
+                                <p class="highlighted">0</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="cell cart-summary">
+                                <h3>Tổng cộng:</h3>
+                            </div>
+                            <div class="cell">
+                                <p class="highlighted"
+                                   th:text="${#numbers.formatDecimal(cart.totalPrice,0,'COMMA',0,'NONE')} + ' VND'"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form class="westeros-form" th:object="${orderFrm}" action="#" th:action="@{/createOrder}" method="post">
+                <button class="button checkout-button">Đặt hàng!</button>
+            </form>
+        </div>
+        <div class="clearfix"></div>
+    </section>
+</div>
 <div th:replace="fragments/footer :: footer"></div>
 
 </body>

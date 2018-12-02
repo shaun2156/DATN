@@ -8,11 +8,9 @@ import edu.ptit.quynhhtn.entity.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.context.annotation.ApplicationScope;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
-import javax.annotation.PostConstruct;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -54,6 +52,11 @@ public class SiteConfig {
     }
 
     public Person getLoggedInUser() {
+        if (loggedInUser == null) {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            String name = auth.getName();
+            loggedInUser = personDAO.findPersonByUsername(name).orElse(null);
+        }
         return loggedInUser;
     }
 

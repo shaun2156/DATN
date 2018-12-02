@@ -263,7 +263,8 @@ select::-ms-expand {
   background: url("../images/icons/check.png") 50% 50% no-repeat;
   display: none;
 }
-.westeros-form input[type=text], .westeros-form input[type=password], .westeros-form textarea {
+
+.westeros-form input[type=text], .westeros-form input[type=password], .westeros-form input[type=date], .westeros-form textarea {
   width: 100%;
   border: 1px solid #d5d5d5;
   border-radius: 2px;
@@ -2167,7 +2168,8 @@ header .westeros-separator {
   position: relative;
   margin-top: 4px;
 }
-#header-bottom .westeros-form select, #header-bottom .westeros-form input[type=text], #header-bottom .westeros-form input[type=password] {
+
+#header-bottom .westeros-form select, #header-bottom .westeros-form input[type=text], #header-bottom .westeros-form input[type=password], #header-bottom .westeros-form input[type=date] {
   float: left;
   height: 38px;
   border: 1px solid #d5d5d5;
@@ -4332,7 +4334,7 @@ svg.sidebar-control {
   color: #81929b;
 }
 .shopping-cart .cell.cart-summary {
-  width: 87.4423963134%;
+  width: 80.6451612903%;
   height: 60px;
   padding-left: 15px;
 }
