@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
+
 @Controller
 @SessionAttributes("compareCart")
 public class CompareCartController {
@@ -21,7 +23,6 @@ public class CompareCartController {
         if(selected != null && compareCart.getItemList().stream().noneMatch(listItem -> listItem.getItemId().equals(item))){
             compareCart.getItemList().add(selected);
         }
-        System.out.println(compareCart.getItemList().size());
         return selected.getName();
     }
 
@@ -33,7 +34,6 @@ public class CompareCartController {
 
     @GetMapping("/compare.html")
     public String viewCompareCart(CompareCart compareCart, Model model){
-        System.out.println(compareCart.getItemList().size());
         return "compare";
     }
 }

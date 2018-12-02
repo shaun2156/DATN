@@ -29,18 +29,18 @@ public class BaseEntity {
         Person editor = SiteConfig.getInstance().getLoggedInUser();
         if(editor != null) {
             setCreatedByPerson(editor);
-            setCreatedDate(new Date());
             setUpdatedByPerson(editor);
-            setUpdatedDate(new Date());
         }
+        setCreatedDate(new Date());
+        setUpdatedDate(new Date());
     }
     @PreUpdate
     public void preUpdate(){
         Person editor = SiteConfig.getInstance().getLoggedInUser();
         if(editor != null) {
             setUpdatedByPerson(editor);
-            setUpdatedDate(new Date());
         }
+        setUpdatedDate(new Date());
     }
 
     public Long getCreatedBy() {

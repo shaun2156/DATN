@@ -115,6 +115,9 @@
         var cmpUrl = "/addToCart?item=" + $(this).attr("value");
         $.ajax({url: cmpUrl, success: function(result){
                 $('#cart-modal > h5 > span').html(result);
+                setTimeout(function(){
+                    location.reload();
+				},1000);
             }});
     });
 
