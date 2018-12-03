@@ -5,6 +5,7 @@ import edu.ptit.quynhhtn.dao.PersonDAO;
 import edu.ptit.quynhhtn.dao.StoreConfigDAO;
 import edu.ptit.quynhhtn.entity.Category;
 import edu.ptit.quynhhtn.entity.Person;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -52,10 +53,13 @@ public class SiteConfig {
     }
 
     public Person getLoggedInUser() {
-        if (loggedInUser == null) {
-            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (!StringUtils.isEmpty(auth.getName())) {
             String name = auth.getName();
             loggedInUser = personDAO.findPersonByUsername(name).orElse(null);
+            setLoggedInUser(loggedInUser);
+        } else {
+            loggedInUser = null;
         }
         return loggedInUser;
     }

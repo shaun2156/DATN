@@ -1,7 +1,6 @@
 package edu.ptit.quynhhtn.entity;
 
 import edu.ptit.quynhhtn.config.SiteConfig;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -25,21 +24,18 @@ public class BaseEntity {
     protected Date updatedDate;
 
     @PrePersist
-    public void prePersist(){
+    public void prePersist() {
         Person editor = SiteConfig.getInstance().getLoggedInUser();
-        if(editor != null) {
-            setCreatedByPerson(editor);
-            setUpdatedByPerson(editor);
-        }
+        setCreatedByPerson(editor);
+        setUpdatedByPerson(editor);
         setCreatedDate(new Date());
         setUpdatedDate(new Date());
     }
+
     @PreUpdate
-    public void preUpdate(){
+    public void preUpdate() {
         Person editor = SiteConfig.getInstance().getLoggedInUser();
-        if(editor != null) {
-            setUpdatedByPerson(editor);
-        }
+        setUpdatedByPerson(editor);
         setUpdatedDate(new Date());
     }
 
@@ -56,7 +52,7 @@ public class BaseEntity {
     }
 
     public void setCreatedByPerson(Person createdByPerson) {
-        if(createdByPerson != null){
+        if (createdByPerson != null) {
             setCreatedBy(createdByPerson.getPersonId());
         }
         this.createdByPerson = createdByPerson;
@@ -75,7 +71,7 @@ public class BaseEntity {
     }
 
     public void setUpdatedByPerson(Person updatedByPerson) {
-        if(updatedByPerson != null){
+        if (updatedByPerson != null) {
             setUpdatedBy(updatedByPerson.getPersonId());
         }
         this.updatedByPerson = updatedByPerson;

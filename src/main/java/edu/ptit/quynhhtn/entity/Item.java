@@ -165,6 +165,9 @@ public class Item extends BaseEntity {
     }
 
     public List<ImageUrl> getImageUrls() {
+        if (CollectionUtils.isEmpty(imageUrls)) {
+            imageUrls.add(new ImageUrl());
+        }
         return imageUrls;
     }
 
