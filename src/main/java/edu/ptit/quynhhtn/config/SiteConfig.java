@@ -54,7 +54,7 @@ public class SiteConfig {
 
     public Person getLoggedInUser() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        if (!StringUtils.isEmpty(auth.getName())) {
+        if (!StringUtils.isEmpty(auth.getName()) && !auth.getName().equals("anonymousUser")) {
             String name = auth.getName();
             loggedInUser = personDAO.findPersonByUsername(name).orElse(null);
             setLoggedInUser(loggedInUser);
