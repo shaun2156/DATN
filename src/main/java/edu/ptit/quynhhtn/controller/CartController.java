@@ -5,6 +5,7 @@ import edu.ptit.quynhhtn.dao.CustomerDAO;
 import edu.ptit.quynhhtn.dao.ItemDAO;
 import edu.ptit.quynhhtn.entity.*;
 import edu.ptit.quynhhtn.form.CheckOutOrderFrm;
+import edu.ptit.quynhhtn.service.OrderService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class CartController {
 
     @Autowired
     CustomerDAO customerDAO;
+
+    @Autowired
+    OrderService orderService;
 
     Cart cart;
 
@@ -96,8 +100,10 @@ public class CartController {
 
     @PostMapping("/createOrder")
     public String createOrder(@ModelAttribute CheckOutOrderFrm orderFrm, Model model) {
-        orderFrm.getPaymentInfo();
-        return "checkout.html";
+        orderService.storeOrder(conversationFrm, cart);
+        cart = new Cart();
+        model.addAttribute("cart", cart);
+        return "redirect:index.html";
     }
 
     @GetMapping("/cart.html")

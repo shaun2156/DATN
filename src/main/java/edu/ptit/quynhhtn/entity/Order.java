@@ -29,7 +29,7 @@ public class Order extends BaseEntity {
     @JoinColumn(name = "shipmentId", insertable = false, updatable = false)
     private ShipmentInfo shipmentInfo;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cartId", insertable = false, updatable = false)
     private Cart cart;
 
