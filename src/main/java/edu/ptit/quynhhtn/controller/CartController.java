@@ -38,7 +38,8 @@ public class CartController {
         ItemDetail detail = selected.getItemDetails().stream().filter(det -> det.getQuantity() > 0).findFirst().orElse(null);
         if (detail != null) {
             CartItem cartItem;
-            cartItem = cart.getCartItemList().stream().filter(items -> items.getItemDetail().getItemId() == selected.getItemId()).findFirst().orElse(null);
+            cartItem = cart.getCartItemList().stream()
+                    .filter(items -> items.getItemDetail().getItemId().equals(selected.getItemId())).findFirst().orElse(null);
             if (cartItem == null) {
                 cartItem = new CartItem();
                 cartItem.setItemDetail(detail);

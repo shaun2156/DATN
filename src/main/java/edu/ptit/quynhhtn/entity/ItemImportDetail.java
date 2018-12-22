@@ -18,9 +18,15 @@ public class ItemImportDetail extends BaseEntity {
 
     private Long itemImportId;
 
+    private Long itemId;
+
     @ManyToOne
     @JoinColumn(name = "itemImportId", referencedColumnName = "importingId", insertable = false, updatable = false)
     private ItemImporting itemImporting;
+
+    @ManyToOne
+    @JoinColumn(name = "itemId", referencedColumnName = "itemId", insertable = false, updatable = false)
+    private Item item;
 
     public ItemImportDetail() {
     }
@@ -84,4 +90,22 @@ public class ItemImportDetail extends BaseEntity {
         this.cost = cost;
     }
 
+    public Long getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(Long itemId) {
+        this.itemId = itemId;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        if(item != null){
+            itemId = item.getItemId();
+        }
+        this.item = item;
+    }
 }
