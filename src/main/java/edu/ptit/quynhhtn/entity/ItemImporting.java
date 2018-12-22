@@ -1,6 +1,7 @@
 package edu.ptit.quynhhtn.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class ItemImporting extends BaseEntity {
@@ -26,8 +27,8 @@ public class ItemImporting extends BaseEntity {
     @JoinColumn(name = "supplierId", insertable = false, updatable = false)
     private Supplier supplier;
 
-    public ItemImporting() {
-    }
+    @OneToMany(mappedBy = "itemImportId", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ItemImportDetail> itemDetails;
 
     public Long getImportingId() {
         return importingId;

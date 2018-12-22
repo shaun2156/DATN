@@ -4,19 +4,16 @@ import edu.ptit.quynhhtn.config.SiteConfig;
 import edu.ptit.quynhhtn.dao.CustomerDAO;
 import edu.ptit.quynhhtn.dao.PersonDAO;
 import edu.ptit.quynhhtn.entity.Customer;
-import edu.ptit.quynhhtn.entity.Person;
 import edu.ptit.quynhhtn.form.ProfileFrm;
 import edu.ptit.quynhhtn.form.RegisterFrm;
 import edu.ptit.quynhhtn.service.UserProfileService;
 import edu.ptit.quynhhtn.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.Date;
 
 @Controller
 public class UserController {
@@ -55,6 +52,7 @@ public class UserController {
             @RequestParam(name = "registerError", required =  false, defaultValue = "false") boolean registerResult,
             RegisterFrm registerFrm,
             Principal principal, Model model){
+        model.addAttribute("registerFrm", registerFrm);
         if(principal != null) {
             SiteConfig.getInstance().setLoggedInUser(personDAO.findPersonByUsername(principal.getName()).orElse(null));
             return "redirect:index.html";

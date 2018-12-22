@@ -55,16 +55,6 @@
             </div>
         </div>
         <div class="row">
-            <div class="cell" style="height: 64px;">
-                <ul class="colorpicker">
-                    <li><span data-color="#008fbe"></span></li>
-                    <li><span data-color="#90e103"></span></li>
-                    <li><span data-color="#4c4cab"></span></li>
-                    <li><span data-color="#252525"></span></li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
             <div class="cell" style="height: 48px;">
                 <h5 class="stock">
                     <svg th:class="${item.inStock?'svg-check':'svg-plus'}">
@@ -73,17 +63,6 @@
                     <span th:class="${item.inStock?'available':'not-available'}"
                           th:text="${(item.inStock)?'Sẵn hàng':'Hết hàng'}"></span>
                 </h5>
-            </div>
-        </div>
-        <div class="row">
-            <div class="cell" style="height: 65px;">
-                <div class="counter">
-                    <div class="control left"></div>
-                    <div class="value">
-                        <h5>2</h5>
-                    </div>
-                    <div class="control right"></div>
-                </div>
             </div>
         </div>
         <div class="row">

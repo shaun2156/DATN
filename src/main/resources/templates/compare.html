@@ -21,31 +21,21 @@
 			<h3 class="title" th:if="${#lists.isEmpty(compareCart.itemList)}">Hiện không có sản phẩm nào được chọn!</h3>
 
 			<ul th:unless="${#lists.isEmpty(compareCart.itemList)}" class="slide-controls">
-				<!-- LEFT CONTROL -->
 				<li>
 					<a href="#" class="button prev">
-						<!-- SVG ARROW -->
 						<svg class="svg-arrow">
 							<use xlink:href="#svg-arrow"></use>
 						</svg>
-						<!-- /SVG ARROW -->
 					</a>
 				</li>
-				<!-- /LEFT CONTROL -->
-
-				<!-- RIGHT CONTROL -->
 				<li>
 					<a href="#" class="button next">
-						<!-- SVG ARROW -->
 						<svg class="svg-arrow">
 							<use xlink:href="#svg-arrow"></use>
 						</svg>
-						<!-- /SVG ARROW -->
 					</a>
 				</li>
-				<!-- /RIGHT CONTROL -->
 			</ul>
-
 			<div th:unless="${#lists.isEmpty(compareCart.itemList)}" class="owl-compare-list-container">
 				<ul class="owl-compare-list owl-carousel">
 					<li class="list-item">
@@ -83,18 +73,8 @@
 								</div>
 							</div>
 							<div class="row">
-								<div class="cell" style="height: 64px;">
-									<h5>Màu sắc</h5>
-								</div>
-							</div>
-							<div class="row">
 								<div class="cell" style="height: 48px;">
 									<h5>Tình trạng</h5>
-								</div>
-							</div>
-							<div class="row">
-								<div class="cell" style="height: 65px;">
-									<h5>Số lượng</h5>
 								</div>
 							</div>
 							<div class="row">

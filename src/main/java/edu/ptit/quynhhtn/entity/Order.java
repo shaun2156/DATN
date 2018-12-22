@@ -21,6 +21,8 @@ public class Order extends BaseEntity {
 
     private String receiverName;
 
+    private String orderStatus;
+
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "paymentId", insertable = false, updatable = false)
     private PaymentInfo paymentInfo;
@@ -121,5 +123,13 @@ public class Order extends BaseEntity {
             setCartId(cart.getCartId());
         }
         this.cart = cart;
+    }
+
+    public String getOrderStatus() {
+        return orderStatus;
+    }
+
+    public void setOrderStatus(String orderStatus) {
+        this.orderStatus = orderStatus;
     }
 }
