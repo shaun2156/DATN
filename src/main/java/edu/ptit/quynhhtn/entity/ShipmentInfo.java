@@ -26,7 +26,7 @@ public class ShipmentInfo extends BaseEntity{
     private String receiverName;
 
     @OneToOne
-    @JoinColumn(name = "orderId", insertable = false, updatable = false)
+    @JoinColumn(name = "orderId", referencedColumnName = "orderId", insertable = false, updatable = false)
     private Order order;
 
     @ManyToOne

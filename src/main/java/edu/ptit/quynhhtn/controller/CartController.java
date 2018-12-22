@@ -69,6 +69,8 @@ public class CartController {
         orderFrm.getPaymentInfo().setBillingName(user.getFullName());
         orderFrm.getPaymentInfo().setBillingEmail(user.getEmail());
         orderFrm.getPaymentInfo().setBillingPhone(user.getPhone());
+        orderFrm.getPaymentInfo().setPaymentOption("bank");
+        orderFrm.getPaymentInfo().setPaymentTerm("bank");
         orderFrm.getShipmentInfo().setReceiverName(user.getFullName());
         conversationFrm = orderFrm;
         model.addAttribute("orderFrm", conversationFrm);

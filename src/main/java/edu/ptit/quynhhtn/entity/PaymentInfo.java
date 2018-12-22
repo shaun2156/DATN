@@ -25,7 +25,7 @@ public class PaymentInfo extends BaseEntity{
     private String description;
 
     @OneToOne
-    @JoinColumn(name = "orderId", insertable = false, updatable = false)
+    @JoinColumn(name = "orderId", referencedColumnName = "orderId", insertable = false, updatable = false)
     private Order order;
 
     public Long getPaymentId() {

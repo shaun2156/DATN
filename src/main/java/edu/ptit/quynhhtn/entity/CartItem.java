@@ -15,7 +15,7 @@ public class CartItem extends BaseEntity{
     private double quantity;
 
     @ManyToOne
-    @JoinColumn(name = "cartId", insertable = false, updatable = false)
+    @JoinColumn(name = "cartId", referencedColumnName = "cartId", insertable = false, updatable = false)
     private Cart cart;
 
     @ManyToOne
