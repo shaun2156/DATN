@@ -20,6 +20,7 @@ public class OrderService {
         PaymentInfo paymentInfo = orderFrm.getPaymentInfo();
         ShipmentInfo shipmentInfo = orderFrm.getShipmentInfo();
         Order newOrder = new Order();
+        newOrder.setOrderStatus("new");
         newOrder.setAddress(shipmentInfo.getAddress());
         newOrder.setContactNo(paymentInfo.getBillingPhone());
         newOrder.setReceiverName(shipmentInfo.getReceiverName());
