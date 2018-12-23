@@ -28,11 +28,5 @@ public class OrderService {
         newOrder.setPaymentInfo(paymentInfo);
         newOrder.setShipmentInfo(shipmentInfo);
         orderDAO.save(newOrder);
-//        paymentInfo.setOrder(newOrder);
-//        shipmentInfo.setOrder(newOrder);
-//        newOrder.setShipmentId(shipmentInfo.getShipmentId());
-//        newOrder.setPaymentId(paymentInfo.getPaymentId());
-//        newOrder.setCartId(cart.getCartId());
-
     }
 }

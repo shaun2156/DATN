@@ -9,12 +9,6 @@ public class Order extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
 
-    private Long cartId;
-
-    private Long paymentId;
-
-    private Long shipmentId;
-
     private String address;
 
     private String contactNo;
@@ -23,16 +17,16 @@ public class Order extends BaseEntity {
 
     private String orderStatus;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "paymentId", insertable = false, updatable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "paymentId")
     private PaymentInfo paymentInfo;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "shipmentId", insertable = false, updatable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "shipmentId")
     private ShipmentInfo shipmentInfo;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cartId", insertable = false, updatable = false)
+    @JoinColumn(name = "cartId")
     private Cart cart;
 
     public Long getOrderId() {
@@ -41,31 +35,6 @@ public class Order extends BaseEntity {
 
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
-    }
-
-    public Long getCartId() {
-        return cartId;
-    }
-
-    public void setCartId(Long cartId) {
-        this.cartId = cartId;
-    }
-
-
-    public Long getPaymentId() {
-        return paymentId;
-    }
-
-    public void setPaymentId(Long paymentId) {
-        this.paymentId = paymentId;
-    }
-
-    public Long getShipmentId() {
-        return shipmentId;
-    }
-
-    public void setShipmentId(Long shipmentId) {
-        this.shipmentId = shipmentId;
     }
 
     public String getAddress() {
@@ -97,9 +66,6 @@ public class Order extends BaseEntity {
     }
 
     public void setPaymentInfo(PaymentInfo paymentInfo) {
-        if(paymentInfo != null){
-            setPaymentId(paymentInfo.getPaymentId());
-        }
         this.paymentInfo = paymentInfo;
     }
 
@@ -108,9 +74,6 @@ public class Order extends BaseEntity {
     }
 
     public void setShipmentInfo(ShipmentInfo shipmentInfo) {
-        if(shipmentInfo != null){
-            setShipmentId(shipmentInfo.getShipmentId());
-        }
         this.shipmentInfo = shipmentInfo;
     }
 
@@ -119,9 +82,6 @@ public class Order extends BaseEntity {
     }
 
     public void setCart(Cart cart) {
-        if(cart != null){
-            setCartId(cart.getCartId());
-        }
         this.cart = cart;
     }
 
