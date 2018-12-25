@@ -38,7 +38,7 @@ $('.cart-popup').magnificPopup({
             $('#cart-modal > h5 > span').html(result);
             setTimeout(function () {
                 location.reload();
-            }, 1000);
+            }, 5000);
         }
     });
 });
