@@ -51,7 +51,7 @@ public class Item extends BaseEntity {
 
     public double getRating(){
         if(CollectionUtils.isEmpty(comments)) return 0;
-        return comments.stream().mapToDouble(Comment::getRating).average().orElse(0);
+        return comments.stream().mapToDouble(Comment::getRating).average().orElse(5);
     }
 
     public boolean isInStock(){
