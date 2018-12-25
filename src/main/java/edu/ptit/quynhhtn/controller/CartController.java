@@ -35,7 +35,7 @@ public class CartController {
     @ResponseBody
     public String addToCart(@RequestParam Long item, Cart cart) {
         Item selected = itemDAO.findById(item).orElse(null);
-        ItemDetail detail = selected.getItemDetails().stream().filter(det -> det.getQuantity() > 0).findFirst().orElse(null);
+        ItemDetail detail = selected.getItemDetails().stream().filter(det -> det.getStockRemain() > 0).findFirst().orElse(null);
         if (detail != null) {
             CartItem cartItem;
             cartItem = cart.getCartItemList().stream()

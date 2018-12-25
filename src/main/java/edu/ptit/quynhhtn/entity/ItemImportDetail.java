@@ -22,7 +22,7 @@ public class ItemImportDetail extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "itemImportId", referencedColumnName = "importingId", insertable = false, updatable = false)
-    private ItemImporting itemImporting;
+    private ItemImportVoucher itemImporting;
 
     @ManyToOne
     @JoinColumn(name = "itemId", referencedColumnName = "itemId", insertable = false, updatable = false)
@@ -71,11 +71,11 @@ public class ItemImportDetail extends BaseEntity {
         this.quantity = quantity;
     }
 
-    public ItemImporting getItemImporting() {
+    public ItemImportVoucher getItemImporting() {
         return itemImporting;
     }
 
-    public void setItemImporting(ItemImporting itemImporting) {
+    public void setItemImporting(ItemImportVoucher itemImporting) {
         if (itemImporting != null) {
             setItemImportId(itemImporting.getImportingId());
         }

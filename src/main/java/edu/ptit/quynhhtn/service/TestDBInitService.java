@@ -3,12 +3,9 @@ package edu.ptit.quynhhtn.service;
 import edu.ptit.quynhhtn.dao.*;
 import edu.ptit.quynhhtn.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.PostConstruct;
-import java.util.Date;
 import java.util.Random;
 
 @Service
@@ -41,7 +38,7 @@ public class TestDBInitService {
         categoryDAO.findAll().forEach(category -> {
             if (category.getName().equals("root")) return;
             Random rand = new Random();
-            int itemQty = rand.nextInt(30) + 30;
+            int itemQty = rand.nextInt(10) + 5;
             for (int i = 1; i <= itemQty; i++) {
                 String itemName = category.getName() + " kiểu " + i;
                 String description = "Mô tả " + itemName + " đầy đủ. Dữ liệu thử nghiệm";

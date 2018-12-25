@@ -55,7 +55,7 @@ public class Item extends BaseEntity {
     }
 
     public boolean isInStock(){
-        return !(CollectionUtils.isEmpty(itemDetails) || itemDetails.stream().mapToInt(ItemDetail::getQuantity).sum() == 0);
+        return !(CollectionUtils.isEmpty(itemDetails) || itemDetails.stream().mapToInt(ItemDetail::getStockRemain).sum() == 0);
     }
 
     public Item() {

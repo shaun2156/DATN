@@ -1,8 +1,5 @@
 package edu.ptit.quynhhtn.entity;
 
-import org.springframework.util.CollectionUtils;
-import org.thymeleaf.util.ArrayUtils;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -19,7 +16,7 @@ public class ItemDetail extends BaseEntity {
 
     private String color;
 
-    private Integer quantity;
+    private Integer stockRemain;
 
     private double cost;
 
@@ -30,10 +27,10 @@ public class ItemDetail extends BaseEntity {
     public ItemDetail() {
     }
 
-    public ItemDetail(String size, String color, Integer quantity, Item item) {
+    public ItemDetail(String size, String color, Integer stockRemain, Item item) {
         this.size = size;
         this.color = color;
-        this.quantity = quantity;
+        this.stockRemain = stockRemain;
         this.itemId = item == null ? null : item.getItemId();
         if (item != null) {
             item.getItemDetails().add(this);
@@ -72,12 +69,12 @@ public class ItemDetail extends BaseEntity {
         this.color = color;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Integer getStockRemain() {
+        return stockRemain;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setStockRemain(Integer stockRemain) {
+        this.stockRemain = stockRemain;
     }
 
     public Item getItem() {

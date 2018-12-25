@@ -53,27 +53,30 @@
                               method="post">
                             <div>
                                 <label class="rl-label required">Họ tên</label>
-                                <input type="text" th:field="*{paymentInfo.billingName}"
+                                <input type="text" th:field="*{paymentInfo.billingName}" onchange="subCheckoutFrm(this)"
                                        placeholder="Nhập tên đầy đủ...">
                             </div>
                             <div>
                                 <label class="rl-label required">Địa chỉ</label>
                                 <input type="text" th:field="*{paymentInfo.billingAddress}"
+                                       onchange="subCheckoutFrm(this)"
                                        placeholder="Địa chỉ thanh toán...">
                             </div>
                             <div>
                                 <label class="rl-label required">Email</label>
-                                <input type="text" th:field="*{paymentInfo.billingEmail}" placeholder="Nhập email...">
+                                <input type="text" th:field="*{paymentInfo.billingEmail}"
+                                       onchange="subCheckoutFrm(this)" placeholder="Nhập email...">
                             </div>
                             <div>
                                 <label class="rl-label required">Số điện thoại</label>
                                 <input type="text" th:field="*{paymentInfo.billingPhone}"
+                                       onchange="subCheckoutFrm(this)"
                                        placeholder="Nhập số điện thoại...">
                             </div>
                             <div></div>
-                            <div class="full-input">
-                                <button class="button login">Lưu thay đổi</button>
-                            </div>
+                            <!--<div class="full-input">-->
+                            <!--<button class="button login">Lưu thay đổi</button>-->
+                            <!--</div>-->
                         </form>
                     </div>
                 </div>
@@ -91,20 +94,22 @@
                             <div>
                                 <label class="rl-label required">Họ tên người nhận</label>
                                 <input type="text" th:field="*{shipmentInfo.receiverName}"
+                                       onchange="subCheckoutFrm(this)"
                                        placeholder="Nhập tên đầy đủ...">
                             </div>
                             <div>
                                 <label class="rl-label required">Địa chỉ giao hàng</label>
-                                <input type="text" th:field="*{shipmentInfo.address}"
+                                <input type="text" th:field="*{shipmentInfo.address}" onchange="subCheckoutFrm(this)"
                                        placeholder="Địa chỉ giao hàng...">
                             </div>
                             <div>
                                 <label class="rl-label required">Ngày giao</label>
                                 <input type="date" th:field="*{shipmentInfo.plannedDate}"
+                                       onchange="subCheckoutFrm(this)"
                                        placeholder="Ngày giao mong muốn...">
                             </div>
                             <div class="full-input">
-                                <button class="button login">Lưu thay đổi</button>
+                                <!--<button class="button login">Lưu thay đổi</button>-->
                             </div>
                         </form>
                     </div>
@@ -143,7 +148,7 @@
                             <input type="hidden" name="payment_method" value="true"/>
                             <div class="full-input">
                                 <input type="radio" id="bank" th:field="*{paymentInfo.paymentOption}"
-                                       th:selected="${true}"
+                                       th:selected="${true}" onchange="subCheckoutFrm(this)"
                                        name="payment_method" value="bank">
                                 <label class="rl-label" for="bank"><span class="radio"><span></span></span>Chuyển
                                     khoản</label>
@@ -152,19 +157,19 @@
 
                             <div class="full-input">
                                 <input type="radio" id="paypal" th:field="*{paymentInfo.paymentOption}"
-                                       name="payment_method" value="e-wallet">
+                                       name="payment_method" value="e-wallet" onchange="subCheckoutFrm(this)">
                                 <label class="rl-label" for="paypal"><span class="radio"><span></span></span>Ví điện tử</label>
                             </div>
 
                             <div class="full-input">
                                 <input type="radio" id="cheque" th:field="*{paymentInfo.paymentOption}"
-                                       name="payment_method" value="cod" checked>
+                                       name="payment_method" value="cod" checked onchange="subCheckoutFrm(this)">
                                 <label class="rl-label" for="cheque"><span class="radio"><span></span></span>Thanh toán
                                     khi nhận hàng</label>
                             </div>
-                            <div class="full-input">
-                                <button class="button login">Lưu thay đổi</button>
-                            </div>
+                            <!--<div class="full-input">-->
+                            <!--<button class="button login">Lưu thay đổi</button>-->
+                            <!--</div>-->
                         </form>
                     </div>
                 </div>
